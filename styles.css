@@ -1,0 +1,223 @@
+/* 
+color palette:
+
+    CERULEAN: #4484CE
+    ALUMINIUM: #D9D9D9
+    LIGHT: #F9CF00
+    TANGERINE: #F19F4D
+
+ */
+
+* {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+    background-color: #f5f5f5;
+}
+
+br {
+    margin: 5px 0;
+}
+
+.rectangle {
+    border: 1px solid #FF0000;
+    position: absolute;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.center {
+    justify-content: center;
+}
+
+.width-full {
+    width: 100%;
+}
+
+.column-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.stretch {
+    align-items: stretch;
+}
+
+.sidebar {
+    width: 0px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #1f2835;
+    background-color: #e5e5e5;
+    transition: width 500ms;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    border-color: #d5d5d5;
+}
+
+#sidebar-top {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    background-color: #4484CE;
+}
+
+#sidebar-content-container {
+    visibility: hidden;
+    transition-delay: 0ms;
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar-title-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    height: 70px;
+    cursor: default;
+    visibility: inherit;
+}
+
+.sidebar-title {
+    text-align: center;
+    color: #f1f1f1;
+    transition: color 300ms ease-out;
+}
+
+.sidebar-title:hover {
+    color: #F9CF00;
+}
+
+nav div {
+    margin: 10px;
+    padding: 15px;
+    font-size: 20px;
+    box-sizing: border-box;
+    display: block;
+    visibility: inherit;
+    border: solid rgba(0, 0, 0, 0.0) 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border 200ms ease;
+}
+
+nav div:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+    background-color: #f2f2f2;
+}
+
+#content-container {
+    margin-left: 0px;
+    transition: margin 500ms;
+}
+
+header {
+    height: 80px;
+    background-color: #4484ce;
+    color: #f1f1f1;
+    position: sticky;
+    top: 0;
+}
+
+#heading {
+    cursor: default;
+}
+
+.logo-img {
+    max-height: 50px;
+    margin: 5px;
+    filter: invert(95%);
+}
+
+.menu-img {
+    max-height: 32px;
+    margin: 5px;
+    filter: invert(95%);
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.menu-img:hover {
+    filter: invert(80%) sepia(40%) saturate(3464%)
+    hue-rotate(6deg) brightness(105%) contrast(103%);
+}
+
+.center-text {
+    text-align: center;
+}
+
+.space-left {
+    margin-left: 10px;
+}
+
+.space-top {
+    margin-top: 15px;
+}
+
+.side-text {
+    align-self: flex-start;
+    width: 20%;
+    margin: 0 2%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card {
+    padding: 15px;
+    border: solid rgba(0, 0, 0, 0.2) 1px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
+    background-color: #f2f2f2;
+}
+
+.main-container {
+    margin: 0 1%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.image-editor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#camera-image-canvas {
+    align-self: center;
+}
+
+.camera-image {
+    width: 640px;
+    height: 480px;
+}
+
+.draw-button {
+    background-image: url("./pencil.png");
+    width: 16px;
+    height: 16px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>ESP32</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="width-full row-flex">
+   <div class="sidebar" id="mySidebar">
+      <div id="sidebar-top"></div>
+      <div id="sidebar-content-container">
+         <div id="sidebar-title-container">
+            <h2 class="sidebar-title">IBMCO</h2>
+         </div>
+         <br>
+         <nav id="navbar">
+            <div>Menu Item 1</div>
+            <div>Menu Item 2</div>
+            <div>Menu Item 3</div>
+         </nav>
+      </div>
+   </div>
+   <div class="width-full" id="content-container">
+      <header class="width-full row-flex">
+         <img src="menu.png" alt="icon" class="space-left menu-img" id="menu-btn">
+         <div class="width-full row-flex center">
+            <h2 class="center-text" id="heading">Device Setup</h2>
+         </div>
+         <img src="ai.png" alt="icon" class="logo-img">
+      </header>
+      <main class="width-full">
+         <div class="row-flex space-top">
+            <div class="side-text">
+               <canvas id="myChart" width="400px" height="400px"></canvas>
+            </div>
+            <div class="main-container">
+               <div class="image-editor card">
+                  <div class="column-flex stretch">
+                     <div class="row-flex">
+                        <div>draw</div>
+                        <button id="button-draw" class="space-left"><img src="./pencil.png" alt=""></button>
+                     </div>
+                     <br>
+                     <div class="row-flex">
+                        <div>undo</div>
+                        <button id="button-undo" class="space-left"><img src="./undo.png" alt=""></button>
+                     </div>
+                     <br>
+                     <div class="row-flex">
+                        <div>clear</div>
+                        <button id="button-clear" class="space-left"><img src="./delete.png" alt=""></button>
+                     </div>
+                  </div>
+                  <div id="camera-image-canvas" class="space-left">
+                     <img src="320x240.png" alt="icon" class="camera-image">
+                  </div>
+               </div>
+            </div>
+            <div class="side-text">
+               <div class="card">
+                  <p>this is side text</p>
+                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto nam natus facere voluptatum quasi voluptatibus, mollitia deleniti aperiam aut suscipit neque et odio quidem magnam beatae libero qui eaque accusamus!</p>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+</body>
+<script src="./chart.min.js"></script>
+<script src="editor.js"></script>
+<script src="scripts.js"></script>
+</html>
