@@ -60,7 +60,7 @@ class RectangleDrawerContext {
     }
 }
 
-var drawer = new RectangleDrawerContext(document.getElementById('camera-image-canvas'));
+var drawer = new RectangleDrawerContext(document.getElementById('camera-canvas'));
 drawer.canvas.addEventListener('mousemove', (event) => { drawer.mouseMoveHandler(event); });
 drawer.canvas.addEventListener('click', (event) => { drawer.mouseClickHandler(); });
 drawer.draw = true;

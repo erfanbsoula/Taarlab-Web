@@ -4,13 +4,13 @@ document.getElementById("menu-btn").addEventListener("click", (ev) => {
         document.getElementById("sidebar-content-container").style.transitionDelay = "0ms";
         document.getElementById("sidebar-content-container").style.visibility = "hidden";
         document.getElementById("content-container").style.marginLeft = "0";
-        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("sidebar").style.width = "0";
         menuBtn = false;
     } else {
         document.getElementById("sidebar-content-container").style.transitionDelay = "500ms";
         document.getElementById("sidebar-content-container").style.visibility = "visible";
         document.getElementById("content-container").style.marginLeft = "200px";
-        document.getElementById("mySidebar").style.width = "200px";
+        document.getElementById("sidebar").style.width = "200px";
         menuBtn = true;
     }
 })
@@ -21,7 +21,7 @@ const myChart = new Chart(ctx, {
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [{
-            label: '# of Votes',
+            label: "random #",
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -43,6 +43,20 @@ const myChart = new Chart(ctx, {
         }]
     },
     options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Test Chart',
+                font: {
+                    family: "'Arial', 'Verdana', sans-serif",
+                    weight: 'normal',
+                    size: '15px'
+                }
+            },
+            legend: {
+                display: false
+            }
+        },
         scales: {
             y: {
                 beginAtZero: true

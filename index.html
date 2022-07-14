@@ -9,11 +9,11 @@
 
 <body>
 <div class="width-full row-flex">
-   <div class="sidebar" id="mySidebar">
+   <div id="sidebar">
       <div id="sidebar-top"></div>
       <div id="sidebar-content-container">
-         <div id="sidebar-title-container">
-            <h2 class="sidebar-title">IBMCO</h2>
+         <div class="row-flex center" id="sidebar-title-container">
+            <h2 id="sidebar-title">IBMCO</h2>
          </div>
          <br>
          <nav id="navbar">
@@ -25,45 +25,49 @@
    </div>
    <div class="width-full" id="content-container">
       <header class="width-full row-flex">
-         <img src="menu.png" alt="icon" class="space-left menu-img" id="menu-btn">
+         <img src="menu.png" alt="icon" class="space-left" id="menu-btn">
          <div class="width-full row-flex center">
             <h2 class="center-text" id="heading">Device Setup</h2>
          </div>
-         <img src="ai.png" alt="icon" class="logo-img">
+         <img src="ai.png" alt="icon" id="logo-img">
       </header>
       <main class="width-full">
          <div class="row-flex space-top">
-            <div class="side-text">
-               <canvas id="myChart" width="400px" height="400px"></canvas>
-            </div>
-            <div class="main-container">
-               <div class="image-editor card">
-                  <div class="column-flex stretch">
-                     <div class="row-flex">
-                        <div>draw</div>
-                        <button id="button-draw" class="space-left"><img src="./pencil.png" alt=""></button>
-                     </div>
-                     <br>
-                     <div class="row-flex">
-                        <div>undo</div>
-                        <button id="button-undo" class="space-left"><img src="./undo.png" alt=""></button>
-                     </div>
-                     <br>
-                     <div class="row-flex">
-                        <div>clear</div>
-                        <button id="button-clear" class="space-left"><img src="./delete.png" alt=""></button>
-                     </div>
-                  </div>
-                  <div id="camera-image-canvas" class="space-left">
-                     <img src="320x240.png" alt="icon" class="camera-image">
-                  </div>
-               </div>
-            </div>
-            <div class="side-text">
+            <div class="width-full align-self-2start margin-sides column-flex center">
+               <br>
                <div class="card">
                   <p>this is side text</p>
                   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto nam natus facere voluptatum quasi voluptatibus, mollitia deleniti aperiam aut suscipit neque et odio quidem magnam beatae libero qui eaque accusamus!</p>
                </div>
+            </div>
+            <div class="column-flex center align-self-2start margin-sides">
+               <br>
+               <div class="card row-flex center">
+                  <div class="row-flex">
+                     <div>draw</div>
+                     <button id="button-draw" class="space-left"><img src="./pencil.png" alt=""></button>
+                  </div>
+                  <div class="row-flex space-left">
+                     <div>undo</div>
+                     <button id="button-undo" class="space-left"><img src="./undo.png" alt=""></button>
+                  </div>
+                  <div class="row-flex space-left">
+                     <div>clear</div>
+                     <button id="button-clear" class="space-left"><img src="./delete.png" alt=""></button>
+                  </div>
+               </div>
+               <br>
+               <div id="camera-canvas">
+                  <img src="./320x240.jpg" alt="img" id="camera-img">
+               </div>
+            </div>
+            <div class="width-full align-self-2start margin-sides column-flex center">
+               <br>
+               <div class="width-full card">
+                  <canvas id="myChart" style="width: 200px; height: 200px; max-width: 100%;"></canvas>
+               </div>
+               <br>
+               <div class="card">hello world!</div>
             </div>
          </div>
       </main>
@@ -71,6 +75,7 @@
 </div>
 </body>
 <script src="./chart.min.js"></script>
+<!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
 <script src="editor.js"></script>
 <script src="scripts.js"></script>
 </html>

@@ -1,0 +1,216 @@
+// begin config
+
+$CAM_IMG_WIDTH: 640px;
+$CAM_IMG_HEIGHT: 480px;
+
+// end config
+// ********************************************************************************
+// begin color palette:
+
+$CERULEAN: #4484CE;
+$LIGHT_TANGERINE: #F9CF00;
+$TANGERINE: #F19F4D;
+
+$FOREGROUND_DARK: #1F2535; 
+$FOREGROUND_WHITE: #F5F5F5;
+$BAKCGROUND1: #F1F1F1;
+$BAKCGROUND2: #E5E5E5;
+$SOLID_BORDER: #D5D5D5;
+
+// end color palette
+// ********************************************************************************
+// begin mixins
+
+@mixin shadow_border($blur_radius, $shadow_radius) {
+    border: solid rgba(0, 0, 0, 0.2) 1px;
+    box-shadow: 0px 0px $blur_radius $shadow_radius rgba(0, 0, 0, 0.15);
+}
+
+// end mixins
+// ********************************************************************************
+// begin global
+
+* {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+    background-color: $BAKCGROUND1;
+}
+
+br { margin: 5px 0; }
+.width-full { width: 100%; }
+
+.rectangle {
+    border: 1px solid #f06060;
+    position: absolute;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.column-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.align-self-2start { align-self: flex-start; }
+.stretch { align-items: stretch; }
+.center-text { text-align: center; }
+.space-left { margin-left: 10px; }
+.space-top { margin-top: 15px; }
+.margin-sides { margin: 0 20px; }
+
+// end global
+// ********************************************************************************
+// begin sidebar
+
+#sidebar {
+    width: 0px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: $FOREGROUND_DARK;
+    background-color: $BAKCGROUND2;
+    transition: width 500ms;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    border-color: $SOLID_BORDER;
+}
+
+#sidebar-top {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    background-color: $CERULEAN;
+}
+
+#sidebar-content-container {
+    visibility: hidden;
+    transition-delay: 0ms;
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar-title-container {
+    width: 100%;
+    padding-top: 5px;
+    height: 75px;
+    cursor: default;
+    visibility: inherit;
+}
+
+#sidebar-title {
+    text-align: center;
+    color: $FOREGROUND_WHITE;
+    transition: color 300ms ease-out;
+}
+
+#sidebar-title:hover {
+    color: #F9CF00;
+}
+
+nav div {
+    margin: 10px;
+    padding: 15px;
+    font-size: 20px;
+    box-sizing: border-box;
+    display: block;
+    visibility: inherit;
+    border: solid rgba(0, 0, 0, 0.0) 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border 200ms ease;
+}
+
+nav div:hover {
+    @include shadow_border(3px, 1px);
+    background-color: $FOREGROUND_WHITE;
+}
+
+// end sidebar
+// ********************************************************************************
+// begin content
+
+#content-container {
+    margin-left: 0px;
+    transition: margin 500ms;
+}
+
+header {
+    height: 80px;
+    background-color: $CERULEAN;
+    color: $FOREGROUND_WHITE;
+    position: sticky;
+    top: 0;
+    cursor: default;
+
+    // ****************************************
+    #logo-img {
+        max-height: 50px;
+        margin: 5px;
+        filter: invert(95%);
+    }
+    
+    #menu-btn {
+        max-height: 32px;
+        margin: 5px;
+        filter: invert(95%);
+        cursor: pointer;
+        transition: 300ms;
+    }
+    
+    #menu-btn:hover {
+        filter: invert(80%) sepia(40%) saturate(3464%)
+        hue-rotate(6deg) brightness(105%) contrast(103%);
+    }
+    // ****************************************
+}
+
+.card {
+    padding: 15px;
+    border-radius: 15px;
+    @include shadow_border(5px, 3px);
+    background-color: $FOREGROUND_WHITE;
+    box-sizing: border-box;
+}
+
+#camera-canvas {
+    width: $CAM_IMG_WIDTH;
+    height: $CAM_IMG_HEIGHT;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 12px 8px rgba(0, 0, 0, 0.18);
+    border-width: 0;
+    border-radius: 5px;
+}
+
+#camera-img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media only screen and (max-width: 1350px) {
+    #camera-canvas {
+        width: 480px;
+        height: 360px;
+    }
+}
