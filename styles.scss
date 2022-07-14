@@ -183,6 +183,11 @@ header {
     // ****************************************
 }
 
+main {
+    max-width: 1720px;
+    margin: auto;
+}
+
 .card {
     padding: 15px;
     border-radius: 15px;
@@ -208,9 +213,12 @@ header {
     max-height: 100%;
 }
 
-@media only screen and (max-width: 1350px) {
+@media only screen and (max-width: 1320px) {
     #camera-canvas {
         width: 480px;
         height: 360px;
     }
+}
+
+@media only screen and (max-width: 1000px) {
 }

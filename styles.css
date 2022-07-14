@@ -160,6 +160,11 @@ header #menu-btn:hover {
   filter: invert(80%) sepia(40%) saturate(3464%) hue-rotate(6deg) brightness(105%) contrast(103%);
 }
 
+main {
+  max-width: 1720px;
+  margin: auto;
+}
+
 .card {
   padding: 15px;
   border-radius: 15px;
@@ -186,7 +191,7 @@ header #menu-btn:hover {
   max-height: 100%;
 }
 
-@media only screen and (max-width: 1350px) {
+@media only screen and (max-width: 1320px) {
   #camera-canvas {
     width: 480px;
     height: 360px;
