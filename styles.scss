@@ -167,7 +167,7 @@ header {
         margin: 5px;
         filter: invert(95%);
     }
-    
+
     #menu-btn {
         max-height: 32px;
         margin: 5px;
@@ -175,7 +175,7 @@ header {
         cursor: pointer;
         transition: 300ms;
     }
-    
+
     #menu-btn:hover {
         filter: invert(80%) sepia(40%) saturate(3464%)
         hue-rotate(6deg) brightness(105%) contrast(103%);
