@@ -149,6 +149,11 @@ header #logo-img {
   margin: 5px;
   filter: invert(95%);
 }
+header #search-img {
+  max-height: 50px;
+  margin: 5px;
+  filter: invert(95%);
+}
 header #menu-btn {
   max-height: 32px;
   margin: 5px;
@@ -329,22 +334,23 @@ main {
 }
 .styled-table thead tr {
   background-color: #009879;
-  color: #ffffff;
+  color: #F5F5F5;
   text-align: left;
 }
 .styled-table th, .styled-table td {
   padding: 12px 15px;
+  text-align: center;
 }
 .styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #F5F5F5;
 }
 .styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #E5E5E5;
 }
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
-.styled-table tbody tr.active-row {
+.styled-table tbody .active-row {
   font-weight: bold;
   color: #009879;
 }

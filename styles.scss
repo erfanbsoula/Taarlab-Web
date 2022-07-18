@@ -168,6 +168,12 @@ header {
         filter: invert(95%);
     }
 
+    #search-img {
+        max-height: 50px;
+        margin: 5px;
+        filter: invert(95%);
+    }
+
     #menu-btn {
         max-height: 32px;
         margin: 5px;
@@ -356,27 +362,28 @@ main {
 
     thead tr {
         background-color: #009879;
-        color: #ffffff;
+        color: $FOREGROUND_WHITE;
         text-align: left;
     }
 
     th, td {
         padding: 12px 15px;
+        text-align: center;
     }
 
     tbody tr {
-        border-bottom: 1px solid #dddddd;
+        border-bottom: 1px solid $FOREGROUND_WHITE;
     }
     
     tbody tr:nth-of-type(even) {
-        background-color: #f3f3f3;
+        background-color: $BAKCGROUND2;
     }
     
     tbody tr:last-of-type {
         border-bottom: 2px solid #009879;
     }
     
-    tbody tr.active-row {
+    tbody .active-row {
         font-weight: bold;
         color: #009879;
     }
