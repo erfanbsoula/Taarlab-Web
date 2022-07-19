@@ -325,34 +325,49 @@ main {
 }
 
 .styled-table {
+  padding: 0px;
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+}
+.styled-table table {
+  margin: 0;
+  width: 100%;
   border-collapse: collapse;
-  margin: 25px 0;
   font-size: 0.9em;
-  font-family: sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.styled-table thead tr {
-  background-color: #009879;
+.styled-table table thead tr {
+  background-color: #1177aa;
   color: #F5F5F5;
-  text-align: left;
 }
-.styled-table th, .styled-table td {
+.styled-table table th, .styled-table table td {
   padding: 12px 15px;
   text-align: center;
 }
-.styled-table tbody tr {
+.styled-table table tbody tr {
   border-bottom: 1px solid #F5F5F5;
 }
-.styled-table tbody tr:nth-of-type(even) {
-  background-color: #E5E5E5;
+.styled-table table tbody tr:nth-of-type(even) {
+  background-color: #EDEDED;
 }
-.styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
-.styled-table tbody .active-row {
+.styled-table table tbody .active-row {
   font-weight: bold;
   color: #009879;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.profile img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.profile div {
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */
