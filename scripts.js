@@ -64,3 +64,81 @@ const myChart = new Chart(ctx, {
         }
     }
 });
+
+const pie_ctx = document.getElementById('pie-chart').getContext('2d');
+const pie_chart = new Chart(pie_ctx, {
+    type: 'pie',
+    data: {
+      labels: ["Completed", "Not Completed"],
+      datasets: [{
+        label: "count",
+        backgroundColor: ["#3cba9f", "#c45850"],
+        data: [3, 4]
+      }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Statistics',
+                font: {
+                    family: "'Arial', 'Verdana', sans-serif",
+                    weight: 'normal',
+                    size: '15px'
+                }
+            },
+        }
+    }
+});
+
+const pie_ctx2 = document.getElementById('pie-chart2').getContext('2d');
+const pie_chart2 = new Chart(pie_ctx2, {
+    type: 'pie',
+    data: {
+        labels: ["Present", "Not Present"],
+      datasets: [{
+        label: "count",
+        backgroundColor: ["#3cba9f", "#c45850"],
+        data: [5, 1]
+      }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Employee Presence',
+                font: {
+                    family: "'Arial', 'Verdana', sans-serif",
+                    weight: 'normal',
+                    size: '15px'
+                }
+            },
+        }
+    }
+});
+
+const pie_ctx3 = document.getElementById('pie-chart3').getContext('2d');
+const pie_chart3 = new Chart(pie_ctx3, {
+    type: 'pie',
+    data: {
+        labels: [">= 8", "< 8"],
+      datasets: [{
+        label: "count",
+        backgroundColor: ["#3cba9f", "#c45850"],
+        data: [4, 2]
+      }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Employee's Working Hours",
+                font: {
+                    family: "'Arial', 'Verdana', sans-serif",
+                    weight: 'normal',
+                    size: '15px'
+                }
+            },
+        }
+    }
+});
