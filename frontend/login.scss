@@ -1,0 +1,159 @@
+$CERULEAN: #4484CE;
+$MELROSE: #D2BDFF;
+$LIGHT_TANGERINE: #F9CF00;
+$TANGERINE: #F19F4D;
+
+$FOREGROUND_DARK: #1F2535; 
+$FOREGROUND_WHITE: #F5F5F5;
+$BAKCGROUND1: #F1F1F1;
+$BAKCGROUND2: #E5E5E5;
+$SOLID_BORDER: #D5D5D5;
+$GRAY: #858585;
+
+@mixin shadow_border($blur_radius, $shadow_radius) {
+    border: solid rgba(0, 0, 0, 0.2) 1px;
+    box-shadow: 0px 0px $blur_radius $shadow_radius rgba(0, 0, 0, 0.15);
+}
+
+* {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+body {
+    background-color: $BAKCGROUND1;
+    width:100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+br { margin: 5px 0; }
+
+p {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 20px;
+    color: $FOREGROUND_DARK;
+
+    a {
+        color: $TANGERINE;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+}
+
+#container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 500px;
+    min-width: 400px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#login-card {
+    width: 350px;
+    margin-top: 50px;
+    border-radius: 15px;
+    @include shadow_border(8px, 6px);
+    background-color: $FOREGROUND_WHITE;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    #card-header {
+        background-color: $CERULEAN;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        height: 60px;
+        
+        div {
+            font-size: 20px;
+            color: $FOREGROUND_WHITE;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+
+    #logo-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    
+    form {
+        margin: 20px;
+        color: $GRAY;
+
+        input[type=text] {
+            color: $FOREGROUND_DARK;
+            height: 35px;
+            width: 100%;
+            border: 2px solid $GRAY;
+            box-sizing: border-box;
+            border-radius: 10px;
+            text-align: left;
+            padding: 0 10px;
+            background-color: inherit;
+        
+            &:focus {
+                outline: none;
+            }
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+        }
+    }
+}
+
+.button-gradient {
+    margin-right: 5px;
+    margin-left: auto;
+    padding: 11px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-position 0.5s, width 0.2s, height 0.2s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: bold;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #174ea6 0%, #2187e6  50%, #174ea6  100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    &:hover {
+        background-position: right center;
+        text-decoration: none;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    p {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    #login-card {
+        margin-top: 10px;
+    }
+}
