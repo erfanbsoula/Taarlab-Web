@@ -1,10 +1,13 @@
 const express = require('express');
+const session = require("express-session");
 const http = require('http');
 const path = require('path');
-const dataBase = require('./mongoTest.js').databaseConnection
 const app = express();
 const port = 3000;
 
+let mysession = null;
+
+const dataBase = require('./mongoTest.js').databaseConnection
 dataBase((client) => {
 	let adminDB = client.db("test").admin();
 	adminDB.listDatabases(function(err, result) {
@@ -14,11 +17,26 @@ dataBase((client) => {
 	});
 })
 
-app.use(express.static(path.join(__dirname, '..', 'frontend')))
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: true }
+}))
 
 app.get('/', (req, res) => {
-	res.send('Hello World!')
+	if (req.session.id = mysession) {
+		res.send('Hello World!')
+		console.log(`sesion id: ${req.session.id}`)
+	}
+	else {
+		res.send('I dont know you!')
+		mysession = req.session.id;
+	}
 })
+
+app.use(express.static(path.join(__dirname, '..', 'frontend')))
 
 app.all('*', (req, res) => {
 	res.status(404);
