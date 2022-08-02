@@ -1,49 +1,73 @@
 const express = require('express');
+const { client, db } = require('./mongoTest.js');
+const MongoStore = require('connect-mongo');
 const session = require("express-session");
 const http = require('http');
 const path = require('path');
 const app = express();
 const port = 3000;
 
-let mysession = null;
-
-const dataBase = require('./mongoTest.js').databaseConnection
-dataBase((client) => {
-	let adminDB = client.db("test").admin();
+db.collection("sessions").drop((err, delOK) => {
+    if (err) {
+		console.log(err.errmsg);
+	};
+    if (delOK) {
+		console.log("sessions collection deleted");
+	}
+	let adminDB = db.admin();
 	adminDB.listDatabases(function(err, result) {
+		if (err) {
+			console.log(err.errmsg);
+		};
 		console.log(result.databases);
-		client.close();
-		console.log('closed DataBase connection!');
-	});
-})
+	}); 
+});
 
-app.set('trust proxy', 1) // trust first proxy
 app.use(session({
 	secret: 'keyboard cat',
+	store: MongoStore.create({
+		client: client,
+		dbName: 'test',
+		collectionName: 'sessions',
+		autoRemove: 'interval',
+		autoRemoveInterval: 60
+	}),
 	resave: false,
 	saveUninitialized: true,
-	cookie: { secure: true }
-}))
+	unset: 'destroy',
+	cookie: {
+		// secure: true,
+		maxAge: 1000 * 60 * 60
+	}
+}));
 
 app.get('/', (req, res) => {
-	if (req.session.id = mysession) {
-		res.send('Hello World!')
-		console.log(`sesion id: ${req.session.id}`)
+	db.collection("sessions").find({}).toArray(function(err, result) {
+		if (err) throw err;
+		console.log(result);
+	});
+	if (req.session.counter) {
+		req.session.counter++;
+		res.send(`<h3>you are the session #${req.session.counter}</h3>`);
+		return;
 	}
-	else {
-		res.send('I dont know you!')
-		mysession = req.session.id;
-	}
+	req.session.counter = 1;
+	res.send(`<h3>counter set</h3>`);
 })
 
-app.use(express.static(path.join(__dirname, '..', 'frontend')))
+// app.use(express.static(path.join(__dirname, '..', 'frontend')))
 
-app.all('*', (req, res) => {
-	res.status(404);
-	res.send('<h1>Error: 404 not found!<h1>');
+// app.all('*', (req, res) => {
+// 	res.status(404);
+// 	res.send('<h1>Error: 404 not found!<h1>');
+// })
+
+app.get('/close', (req, res) => {
+	client.close();
+	console.log('database connection closed!');
 })
 
 const server = http.createServer(app);
 server.listen(port, () => {
-  console.log(`server listening on port ${port}`);
+	console.log(`server listening on port ${port}`);
 });
