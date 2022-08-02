@@ -2,12 +2,13 @@ const express = require('express');
 const { client, db } = require('./mongoTest.js');
 const MongoStore = require('connect-mongo');
 const session = require("express-session");
-// const passport = require("passport");
-// const LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const http = require('http');
 const path = require('path');
 const app = express();
 const port = 3000;
+const ObjectId = require('mongodb').ObjectId
 
 db.collection("sessions").drop((err, delOK) => {
 	if (err) {
@@ -47,33 +48,36 @@ app.use(session({
 	}
 }));
 
-// passport.use(new LocalStrategy(
-// 	{
-// 		usernameField: 'username',
-// 		passwordField: 'password'
-// 	},
-// 	(username, password, done) => {
-// 		db.collection("users").findOne({ username: username }, function (err, user) {
-// 			if (err) { return done(err); }
-// 			if (!user) { return done(null, false); }
-// 			if (user.password != password) { return done(null, false); }
-// 			return done(null, user);
-// 		});
-// 	}
-// ))
+passport.use(new LocalStrategy(
+	{
+		usernameField: 'username',
+		passwordField: 'password'
+	},
+	(username, password, done) => {
+		db.collection("users").findOne({ username: username }, function (err, user) {
+			if (err) { return done(err); }
+			if (!user) { return done(null, false); }
+			if (user.password != password) { return done(null, false); }
+			console.log(`verified ${user._id}`);
+			return done(null, user);
+		});
+	}
+))
 
-// passport.serializeUser(function(user, done) {
-// 	done(null, user._id);
-// });
+passport.serializeUser(function(user, done) {
+	console.log(`serializing user ${user._id}`)
+	done(null, user._id);
+});
 
-// passport.deserializeUser(function(id, done) {
-// 	db.collection("users").findOne({ _id: id }, function (err, user) {
-// 		console.log(`deserialized user is ${user}`)
-// 		done(err, user);
-// 	});
-// });
+passport.deserializeUser(function(id, done) {
+	db.collection("users").findOne({ _id: ObjectId(id) }, function (err, user) {
+		console.log(`deserialized user is ${user.username}`)
+		done(err, user);
+	});
+});
 
-// app.use(passport.initialize());
+app.use(passport.initialize());
+app.use(passport.session());
 
 function printdb () {
 	db.collection("sessions").find({}).toArray(function(err, result) {
@@ -96,14 +100,14 @@ app.get('/', (req, res) => {
 		req.session.counter = 1;
 		text = `<h3>counter set</h3>`;
 	}
-	if (req.session.loggedIn) {
+	if (req.session.passport && req.session.passport.user) {
 		text += "<h4>logged in<h4>";
 	}
 	res.send(text);
 })
 
 app.get('/login', (req, res) => {
-	if (req.session.loggedIn) {
+	if (req.session.passport && req.session.passport.user) {
 		res.send('you are already logged in!');
 		return;
 	}
@@ -122,27 +126,29 @@ app.post('/signup', (req, res) => {
 	res.redirect('/login');
 })
 
-app.post('/login', (req, res) => {
-	let username = req.body.username;
-	let password = req.body.password;
-	db.collection("users").findOne({ username: username }, function (err, user) {
-		if (err) {
-			console.log(err.message);
-			res.send('something went wrong...');
-			return;
-		}
-		if (!user) {
-			res.send('wrong username');
-			return;
-		}
-		if (user.password != password) {
-			res.send('wrong password');
-			return;
-		}
-		req.session.loggedIn = true;
-		res.redirect('/login-success')
-	});
-})
+app.post('/login', passport.authenticate('local', {successRedirect: '/login-success', failureRedirect: '/login-failure'}))
+
+// app.post('/login', (req, res) => {
+// 	let username = req.body.username;
+// 	let password = req.body.password;
+// 	db.collection("users").findOne({ username: username }, function (err, user) {
+// 		if (err) {
+// 			console.log(err.message);
+// 			res.send('something went wrong...');
+// 			return;
+// 		}
+// 		if (!user) {
+// 			res.send('wrong username');
+// 			return;
+// 		}
+// 		if (user.password != password) {
+// 			res.send('wrong password');
+// 			return;
+// 		}
+// 		req.session.loggedIn = true;
+// 		res.redirect('/login-success')
+// 	});
+// })
 
 app.get('/print', (req, res) => {
 	printdb();
