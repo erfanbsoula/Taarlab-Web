@@ -5,6 +5,43 @@ const client = require('./database.js').client;
 const printdb = require('./database.js').printdb;
 const router = express.Router();
 
+// **********************************************************************
+// User Authentication process and login page
+function isAuthenticated(req) {
+    return req.session.passport && req.session.passport.user;
+}
+
+router.use('/', express.static(path.join(__dirname, '..', 'frontend', 'public')));
+router.get('/login.css', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'frontend', 'login', 'login.css'));
+})
+
+function canLogin(req, res, next) {
+    if (isAuthenticated(req))
+        res.send('you are already logged in!');
+    else next();
+}
+
+router.get('/login', canLogin(req, res, next), (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'frontend', 'login', 'login.html'));
+});
+
+router.post('/login', canLogin(req, res, next),
+    passport.authenticate('local', {
+        successRedirect: '/index.html',
+        failureRedirect: '/login-failure'
+    })
+);
+
+router.use((req, res, next) => {
+    if (!isAuthenticated(req))
+        res.redirect('/login');
+    else next()
+})
+
+// **********************************************************************
+router.use('/', express.static(path.join(__dirname, '..', 'frontend', 'private')));
+
 router.get('/', (req, res) => {
 	let text = "";
 	if (req.session.counter) {
@@ -21,13 +58,6 @@ router.get('/', (req, res) => {
 	res.send(text);
 })
 
-router.get('/login', (req, res) => {
-	if (req.session.passport && req.session.passport.user) {
-		res.send('you are already logged in!');
-		return;
-	}
-	res.sendFile(path.join(__dirname, '..', 'frontend', 'login.html'));
-})
 
 router.get('/signup', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'frontend', 'signup.html'));
@@ -40,8 +70,6 @@ router.post('/signup', (req, res) => {
 	});
 	res.redirect('/login');
 })
-
-router.post('/login', passport.authenticate('local', {successRedirect: '/login-success', failureRedirect: '/login-failure'}))
 
 router.get('/print', (req, res) => {
 	printdb();
@@ -56,7 +84,6 @@ router.get('/login-success', (req, res) => {
 	res.send('login successful!')
 })
 
-router.use(express.static(path.join(__dirname, '..', 'frontend')))
 
 // app.all('*', (req, res) => {
 // 	res.status(404);

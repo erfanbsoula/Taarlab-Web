@@ -12,6 +12,7 @@ module.exports.client = client;
 process.on('SIGINT', () => {
 	console.log('Got SIGINT signal.');
 	client.close();
+	process.exit();
 });
 
 function printdb () {
