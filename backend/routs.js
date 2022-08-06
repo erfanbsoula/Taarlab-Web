@@ -22,14 +22,15 @@ function canLogin(req, res, next) {
     else next();
 }
 
-router.get('/login', canLogin(req, res, next), (req, res) => {
+router.get('/login', canLogin, (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'frontend', 'login', 'login.html'));
 });
 
-router.post('/login', canLogin(req, res, next),
+router.post('/login', canLogin,
     passport.authenticate('local', {
+        // keepSessionInfo: true,
+        failureRedirect: '/login-failure',
         successRedirect: '/index.html',
-        failureRedirect: '/login-failure'
     })
 );
 
