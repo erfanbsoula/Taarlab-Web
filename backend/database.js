@@ -10,8 +10,9 @@ client.connect();
 module.exports.client = client;
 
 process.on('SIGINT', () => {
-	console.log('Got SIGINT signal.');
+	console.log('closing DataBase connections');
 	client.close();
+	console.log('exiting the program');
 	process.exit();
 });
 

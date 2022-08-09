@@ -1,5 +1,7 @@
 let menuBtn = false;
 document.getElementById("menu-btn").addEventListener("click", (ev) => {
+    document.getElementById("content-container").style.transition = "margin 500ms";
+    document.getElementById("menu-btn").classList.toggle("open");
     if (menuBtn) {
         document.getElementById("sidebar-content-container").style.transitionDelay = "0ms";
         document.getElementById("sidebar-content-container").style.visibility = "hidden";

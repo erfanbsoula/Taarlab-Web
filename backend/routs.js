@@ -37,28 +37,60 @@ router.post('/login', canLogin,
 router.use((req, res, next) => {
     if (!isAuthenticated(req))
         res.redirect('/login');
-    else next()
+    else next();
+})
+
+// **********************************************************************
+// API for posting data to the DataBase
+router.post('/data', (req, res) => {
+	if (req.user.level != 2) {
+		res.status(403).send("Unauthorizes Access!");
+		return;
+	}
+
+	if (!req.body.username || !req.body.dateTime || !req.body.progress) {
+		res.status(400).end();
+		return;
+	}
+
+	client.db("test").collection("dataStorage").insertOne({
+		username: req.body.username,
+		dateTime: req.body.dateTime,
+		progress: req.body.progress
+	}, (error) => {
+		if (error) {
+			console.log(error.message);
+			res.status(500).send("DataBase Error!");
+			return;
+		}
+
+		res.status(200).send("Recieved!")
+	});
 })
 
 // **********************************************************************
 router.use('/', express.static(path.join(__dirname, '..', 'frontend', 'private')));
 
 router.get('/', (req, res) => {
-	let text = "";
-	if (req.session.counter) {
-		req.session.counter++;
-		text = `<h3>you are the session #${req.session.counter}</h3>`;
-	}
-	else {
-		req.session.counter = 1;
-		text = `<h3>counter set</h3>`;
-	}
-	if (req.session.passport && req.session.passport.user) {
-		text += "<h4>logged in<h4>";
-	}
-	res.send(text);
+	res.sendFile(path.join(__dirname, '..', 'frontend', 'private', 'index.html'));
 })
 
+router.get('/api/users', (req, res) => {
+	if (req.user.level == 1) {
+		client.db("test").collection("users").find().toArray((error, result) => {
+			if (error) {
+				console.log(error.message);
+				res.status(500).send("DataBase Error!");
+				return;
+			}
+			res.send(JSON.stringify(result));
+		});
+	}
+	else {
+		res.status(403).send("Unauthorizes Access!");
+		return;
+	}
+})
 
 router.get('/signup', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'frontend', 'signup.html'));
