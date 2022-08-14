@@ -1,0 +1,90 @@
+// the object must be a <div> with 4 <span>s inside
+// also the "menu-btn.js" script must be called in the html
+
+// example:
+/**
+ *  <div class="space-left" id="menu-btn">
+ *      <span></span>
+ *      <span></span>
+ *      <span></span>
+ *      <span></span>
+ *  </div>
+**/
+
+#menu-btn {
+    $BTN-WIDTH: 40px;
+    $BTN-HEIGHT: 25px;
+    $LINE-WIDTH: 5px;
+    $DURATION: 300ms;
+
+    width: $BTN-WIDTH;
+    height: $BTN-HEIGHT;
+    position: relative;
+    margin-left: 15px;
+    cursor: pointer;
+
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+
+    span {
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        height: $LINE-WIDTH;
+        width: 100%;
+        border-radius: $LINE-WIDTH;
+        background: $BAKCGROUND1;
+        opacity: 1;
+        left: 0;
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: $DURATION ease-in-out;
+        -moz-transition: $DURATION ease-in-out;
+        -o-transition: $DURATION ease-in-out;
+        transition: $DURATION ease-in-out;
+    
+        &:nth-child(1) {
+            top: 0px;
+        }
+        &:nth-child(2), &:nth-child(3) {
+            top: math.div($BTN-HEIGHT, 2) - math.div($LINE-WIDTH, 2);
+        }
+        &:nth-child(4) {
+            top: $BTN-HEIGHT - $LINE-WIDTH;
+        }
+    }
+
+    &.open span {
+        &:nth-child(1) {
+            top: math.div($BTN-HEIGHT, 2) - math.div($LINE-WIDTH, 2);
+            width: 0%;
+            left: 50%;
+        } 
+        &:nth-child(2) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        &:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        &:nth-child(4) {
+            top: math.div($BTN-HEIGHT, 2) - math.div($LINE-WIDTH, 2);
+            width: 0%;
+            left: 50%;
+        }
+    }
+}

@@ -1,8 +1,7 @@
 // begin config
-@use 'sass:math';
 
-$CAM_IMG_WIDTH: 640px;
-$CAM_IMG_HEIGHT: 480px;
+@use 'sass:math';
+@use 'buttons.scss';
 
 // end config
 // ********************************************************************************
@@ -17,7 +16,10 @@ $FOREGROUND_DARK: #1F2535;
 $FOREGROUND_WHITE: #F5F5F5;
 $BAKCGROUND1: #F1F1F1;
 $BAKCGROUND2: #E5E5E5;
+
 $SOLID_BORDER: #D5D5D5;
+$GRAY: #858585;
+$DARK_GRAY: #656565;
 
 // end color palette
 // ********************************************************************************
@@ -41,14 +43,6 @@ body {
     background-color: $BAKCGROUND1;
 }
 
-br { margin: 5px 0; }
-.width-full { width: 100%; }
-
-.rectangle {
-    border: 1px solid #f06060;
-    position: absolute;
-}
-
 .row-flex {
     display: flex;
     flex-direction: row;
@@ -68,9 +62,12 @@ br { margin: 5px 0; }
     align-items: center;
 }
 
-.align-self-2start { align-self: flex-start; }
+.width-full { width: 100%; }
 .stretch { align-items: stretch; }
+.align-self-2start { align-self: flex-start; }
 .center-text { text-align: center; }
+
+br { margin: 5px 0; }
 .space-left { margin-left: 10px; }
 .space-right { margin-right: 10px; }
 .space-top { margin-top: 15px; }
@@ -123,28 +120,30 @@ br { margin: 5px 0; }
     text-align: center;
     color: $FOREGROUND_WHITE;
     transition: color 300ms ease-out;
+    
+    &:hover {
+        color: #F9CF00;
+    }
 }
 
-#sidebar-title:hover {
-    color: #F9CF00;
-}
+nav {
+    div {
+        margin: 10px;
+        padding: 15px;
+        font-size: 20px;
+        box-sizing: border-box;
+        display: block;
+        visibility: inherit;
+        border: solid rgba(0, 0, 0, 0.0) 1px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border 200ms ease;
 
-nav div {
-    margin: 10px;
-    padding: 15px;
-    font-size: 20px;
-    box-sizing: border-box;
-    display: block;
-    visibility: inherit;
-    border: solid rgba(0, 0, 0, 0.0) 1px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: border 200ms ease;
-}
-
-nav div:hover {
-    @include shadow_border(3px, 1px);
-    background-color: $FOREGROUND_WHITE;
+        &:hover {
+            @include shadow_border(3px, 1px);
+            background-color: $FOREGROUND_WHITE;
+        }
+    }
 }
 
 // end sidebar
@@ -192,155 +191,11 @@ main {
     box-sizing: border-box;
 }
 
-#camera-canvas {
-    width: $CAM_IMG_WIDTH;
-    height: $CAM_IMG_HEIGHT;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 12px 8px rgba(0, 0, 0, 0.18);
-    border-width: 0;
-    border-radius: 5px;
-}
-
-#camera-img {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-@media only screen and (max-width: 1320px) {
-    #camera-canvas {
-        width: 480px;
-        height: 360px;
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-}
-
 // end-content
 // ********************************************************************************
 // begin project-wide styles
 
-// must be a div having 4 spans inside
-.button-magic {
-    margin: 25px;
-    padding: 15px 25px;
-    color: #060505;
-    border-radius: 6px;
-    border: 2px solid #222222;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    font-family: 'Arial', sans-serif;
-    text-transform: uppercase;
-    overflow: hidden;
-    filter: hue-rotate(0deg);
-    transition: all 0.1s linear;
-  
-    &:hover {
-        border: 1px solid transparent;
 
-        span {
-            position: absolute;
-            display: block;
-
-            &:nth-child(1) {
-                filter: hue-rotate(0deg);
-                width: 100%;
-                height: 3px;
-                top: 0;
-                left: -100%;
-                background: linear-gradient(90deg, transparent, #3a86ff);
-                animation: animate1 1s linear infinite;
-            }
-            @keyframes animate1 {
-                0% { left: -100%; }
-                50%,
-                100% { left: 100%; }
-            }
-
-            &:nth-child(2) {
-                filter: hue-rotate(60deg);
-                width: 3px;
-                height: 100%;
-                top: -100%;
-                right: 0;
-                background: linear-gradient(180deg, transparent, #3a86ff);
-                animation: animate2 1s linear infinite;
-                animation-delay: 0.25s;
-            }
-            @keyframes animate2 {
-                0% { top: -100%; }
-                50%,
-                100% { top: 100%; }
-            }
-
-            &:nth-child(3) {
-                filter: hue-rotate(0deg);
-                width: 100%;
-                height: 3px;
-                bottom: 0;
-                right: -100%;
-                background: linear-gradient(270deg, transparent, #3a86ff);
-                animation: animate3 1s linear infinite;
-                animation-delay: 0.5s;
-            }
-            @keyframes animate3 {
-                0% { right: -100%; }
-                50%,
-                100% { right: 100%; }
-            }
-
-            &:nth-child(4) {
-                filter: hue-rotate(60deg);
-                width: 3px;
-                height: 100%;
-                bottom: -100%;
-                left: 0;
-                background: linear-gradient(360deg, transparent, #3a86ff);
-                animation: animate4 1s linear infinite;
-                animation-delay: 0.75s;
-            }
-            @keyframes animate4 {
-                0% { bottom: -100%; }
-                50%,
-                100% { bottom: 100%; }
-            }
-        }
-    }
-}
-
-.button-gradient {
-    margin: 10px;
-    padding: 15px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background-position 0.5s, width 0.2s, height 0.2s;
-    background-size: 200% auto;
-    color: white;
-    border-radius: 10px;
-    display: block;
-    border: 0px;
-    font-weight: 700;
-    box-shadow: 0px 0px 14px -7px #f09819;
-    background-image: linear-gradient(45deg, #174ea6 0%, #2187e6  50%, #174ea6  100%);
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-
-    &:hover {
-        background-position: right center;
-        text-decoration: none;
-    }
-
-    &:active {
-        transform: scale(0.98);
-    }
-}
 
 .styled-table {
     padding: 0px;
@@ -414,81 +269,83 @@ main {
     }
 }
 
-#menu-btn {
-    $BTN-WIDTH: 40px;
-    $BTN-HEIGHT: 25px;
-    $LINE-WIDTH: 5px;
-    $DURATION: 300ms;
+#container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 500px;
+    min-width: 400px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
 
-    width: $BTN-WIDTH;
-    height: $BTN-HEIGHT;
-    position: relative;
-    margin-left: 15px;
-    cursor: pointer;
+#add-user-card {
+    width: 700px;
+    margin-top: 50px;
+    border-radius: 15px;
+    @include shadow_border(8px, 6px);
+    background-color: $FOREGROUND_WHITE;
+    box-sizing: border-box;
+    overflow: hidden;
 
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-
-    span {
-        display: block;
-        position: absolute;
-        box-sizing: border-box;
-        height: $LINE-WIDTH;
+    #card-header {
+        background-color: $CERULEAN;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        border-radius: $LINE-WIDTH;
-        background: $BAKCGROUND1;
-        opacity: 1;
-        left: 0;
-
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-        -webkit-transition: $DURATION ease-in-out;
-        -moz-transition: $DURATION ease-in-out;
-        -o-transition: $DURATION ease-in-out;
-        transition: $DURATION ease-in-out;
+        max-width: 100%;
+        height: 60px;
+        
+        div {
+            font-size: 20px;
+            color: $FOREGROUND_WHITE;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
     
-        &:nth-child(1) {
-            top: 0px;
+    form {
+        margin: 20px;
+        color: $GRAY;
+
+        input[type=text] {
+            color: $FOREGROUND_DARK;
+            height: 35px;
+            width: 100%;
+            border: 2px solid $GRAY;
+            box-sizing: border-box;
+            border-radius: 10px;
+            text-align: left;
+            padding: 0 10px;
+            background-color: inherit;
+        
+            &:focus {
+                outline: none;
+            }
         }
-        &:nth-child(2),
-        &:nth-child(3) {
-            top: math.div($BTN-HEIGHT, 2) - math.div($LINE-WIDTH, 2);
-        }
-        &:nth-child(4) {
-            top: $BTN-HEIGHT - $LINE-WIDTH;
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            margin-left: 5px;
         }
     }
 
-    &.open span {
-        &:nth-child(1) {
-            top: math.div($BTN-HEIGHT, 2) - math.div($LINE-WIDTH, 2);
-            width: 0%;
-            left: 50%;
-        } 
-        &:nth-child(2) {
-            -webkit-transform: rotate(45deg);
-            -moz-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
-            transform: rotate(45deg);
-        }
-        &:nth-child(3) {
-            -webkit-transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        }
-        &:nth-child(4) {
-            top: math.div($BTN-HEIGHT, 2) - math.div($LINE-WIDTH, 2);
-            width: 0%;
-            left: 50%;
-        }
+    .width-30 { width: 30%; }
+    .width-40 { width: 40%; }
+    .width-50 { width: 50%; }
+    .width-60 { width: 60%; }
+    .width-70 { width: 70%; }
+}
+
+#img-upload-canvas {
+    $IMAGE_WIDTH: 80px;
+    img {
+        width: $IMAGE_WIDTH;
+        height: $IMAGE_WIDTH;
+        border-radius: 50%;
     }
 }

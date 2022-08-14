@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HWM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div class="width-full row-flex">
+		<div id="sidebar">
+			<div id="sidebar-top"></div>
+			<div id="sidebar-content-container">
+				<div class="row-flex center" id="sidebar-title-container">
+					<h2 id="sidebar-title">TAARLAB</h2>
+				</div>
+				<br>
+				<nav id="navbar">
+					<div>Menu Item 1</div>
+					<div>Menu Item 2</div>
+					<div>Menu Item 3</div>
+				</nav>
+			</div>
+		</div>
+		<div class="width-full" id="content-container">
+			<header class="width-full row-flex">
+				<div class="space-left" id="menu-btn">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="width-full row-flex center">
+					<h2 class="center-text" id="heading">Add User</h2>
+				</div>
+				<!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+				<img src="assets/icons/ai.png" alt="icon" id="logo-img">
+			</header>
+			<main class="width-full">
+				<div id="container">
+					<div id="add-user-card">
+						<div id="card-header">
+							<div>User Form</div>
+						</div>
+						<form method="post" action="signup">
+							<div class="row-flex width-full center">
+								<div class="width-full space-right width-30">
+									<label for="firstname">first name:</label>
+									<input id="firstname" name="firstname" type="text">
+								</div>
+								<div class="width-full space-left width-50">
+									<label for="lastname">last name:</label>
+									<input id="lastname" name="lastname" type="text">
+								</div>
+							</div>
+							<br>
+							<div class="row-flex width-full center" id="img-upload-canvas">
+								<img src="assets/profile/taylor.webp" alt="icon" class="space-right">
+								<p>Upload Profile Picture:</p>
+								<div class="button-magic space-left">
+									select
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+							</div>
+							<br>
+							<div class="row-flex width-full">
+								<div class="width-full space-right">
+									<label for="username">username:</label>
+									<input id="username" name="username" type="text">
+								</div>
+								<div class="width-full space-left">
+									<label for="password">password:</label>
+									<input id="password" name="password" type="text">
+								</div>
+							</div>
+							<br>
+							<input type="submit" class="button-gradient" value="Signup">
+						</form>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+<script src="scripts.js"></script>
+</html>
