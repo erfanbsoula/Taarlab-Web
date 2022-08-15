@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/datePicker/material_blue.css">
 </head>
 
 <body>
@@ -46,32 +47,37 @@
 						<div id="card-body">
 							<form method="post" action="signup">
 								<div class="row-flex width-full center">
-									<div class="width-full space-right width-40">
+									<div class="space-right width-40">
 										<label for="firstname">first name:</label>
 										<input id="firstname" name="firstname" type="text">
 									</div>
-									<div class="width-full space-left width-60">
+									<div class="space-left width-60">
 										<label for="lastname">last name:</label>
 										<input id="lastname" name="lastname" type="text">
+									</div>
+								</div>
+								<br>
+								<div class="row-flex width-full">
+									<div class="space-right width-50">
+										<label for="nationalID">national ID:</label>
+										<input id="nationalID" name="nationalID" type="text">
+									</div>
+									<div class="space-left width-30" id="date-canvas">
+										<label for="dateInput">date of birth:</label>
+										<input type="date"  id="dateInput" name="dateInput">
 									</div>
 								</div>
 								<br>
 								<div class="row-flex width-full center" id="img-upload-canvas">
 									<img src="assets/profile/taylor.webp" alt="icon" class="space-right">
 									<p>Upload Profile Picture:</p>
-									<div class="button-magic space-left">
+									<input type="file" id="profilePic" accept="image/jpg image/png" style="display: none;">
+									<div class="button-magic space-left" id="uploadBtn">
 										select
 										<span></span>
 										<span></span>
 										<span></span>
 										<span></span>
-									</div>
-								</div>
-								<br>
-								<div class="row-flex width-full">
-									<div class="width-full space-right width-50">
-										<label for="nationalID">national ID:</label>
-										<input id="nationalID" name="nationalID" type="text">
 									</div>
 								</div>
 								<br>
@@ -96,4 +102,6 @@
 	</div>
 </body>
 <script src="scripts/sidebar/sidebar-menu.js"></script>
+<script src="scripts/datePicker/flatPicker.min.js"></script>
+<script src="scripts/script.js"></script>
 </html>

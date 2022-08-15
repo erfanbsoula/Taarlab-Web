@@ -362,6 +362,10 @@ nav div:hover {
   border-radius: 50%;
 }
 
+#date-canvas {
+  align-self: flex-end;
+}
+
 * {
   font-family: Arial, Verdana, Helvetica, sans-serif;
 }
