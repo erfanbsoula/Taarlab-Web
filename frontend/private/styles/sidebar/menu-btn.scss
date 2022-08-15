@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use '../configs.scss' as config;
+
 // the object must be a <div> with 4 <span>s inside
 // also the "menu-btn.js" script must be called in the html
 
@@ -39,7 +42,7 @@
         height: $LINE-WIDTH;
         width: 100%;
         border-radius: $LINE-WIDTH;
-        background: $BAKCGROUND1;
+        background: config.$BAKCGROUND1;
         opacity: 1;
         left: 0;
 

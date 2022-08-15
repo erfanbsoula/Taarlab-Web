@@ -1,175 +1,21 @@
-// begin config
-
-@use 'sass:math';
-@use 'buttons.scss';
-
-// end config
-// ********************************************************************************
-// begin color palette:
-
-$CERULEAN: #4484CE;
-$MELROSE: #D2BDFF;
-$LIGHT_TANGERINE: #F9CF00;
-$TANGERINE: #F19F4D;
-
-$FOREGROUND_DARK: #1F2535; 
-$FOREGROUND_WHITE: #F5F5F5;
-$BAKCGROUND1: #F1F1F1;
-$BAKCGROUND2: #E5E5E5;
-
-$SOLID_BORDER: #D5D5D5;
-$GRAY: #858585;
-$DARK_GRAY: #656565;
-
-// end color palette
-// ********************************************************************************
-// begin mixins
-
-@mixin shadow_border($blur_radius, $shadow_radius) {
-    border: solid rgba(0, 0, 0, 0.2) 1px;
-    box-shadow: 0px 0px $blur_radius $shadow_radius rgba(0, 0, 0, 0.15);
-}
-
-// end mixins
-// ********************************************************************************
-// begin global
-
-* {
-    font-family: Arial, Verdana, Helvetica, sans-serif;
-}
-
-body {
-    margin: 0px;
-    background-color: $BAKCGROUND1;
-}
-
-.row-flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.column-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.center {
-    justify-content: center;
-    align-items: center;
-}
-
-.width-full { width: 100%; }
-.stretch { align-items: stretch; }
-.align-self-2start { align-self: flex-start; }
-.center-text { text-align: center; }
-
-br { margin: 5px 0; }
-.space-left { margin-left: 10px; }
-.space-right { margin-right: 10px; }
-.space-top { margin-top: 15px; }
-.margin-sides { margin: 0 20px; }
-
-// end global
-// ********************************************************************************
-// begin sidebar
-
-#sidebar {
-    width: 0px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: $FOREGROUND_DARK;
-    background-color: $BAKCGROUND2;
-    transition: width 500ms;
-    border-style: solid;
-    border-width: 0 1px 0 0;
-    border-color: $SOLID_BORDER;
-}
-
-#sidebar-top {
-    position: fixed;
-    z-index: -1;
-    width: 100%;
-    height: 80px;
-    top: 0;
-    left: 0;
-    background-color: $CERULEAN;
-}
-
-#sidebar-content-container {
-    visibility: hidden;
-    transition-delay: 0ms;
-    width: 100%;
-    height: 100%;
-}
-
-#sidebar-title-container {
-    width: 100%;
-    padding-top: 5px;
-    height: 75px;
-    cursor: default;
-    visibility: inherit;
-}
-
-#sidebar-title {
-    text-align: center;
-    color: $FOREGROUND_WHITE;
-    transition: color 300ms ease-out;
-    
-    &:hover {
-        color: #F9CF00;
-    }
-}
-
-nav {
-    div {
-        margin: 10px;
-        padding: 15px;
-        font-size: 20px;
-        box-sizing: border-box;
-        display: block;
-        visibility: inherit;
-        border: solid rgba(0, 0, 0, 0.0) 1px;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: border 200ms ease;
-
-        &:hover {
-            @include shadow_border(3px, 1px);
-            background-color: $FOREGROUND_WHITE;
-        }
-    }
-}
-
-// end sidebar
-// ********************************************************************************
-// begin content
-
-#content-container {
-    margin-left: 0px;
-    transition: margin 500ms;
-}
+@use 'styles/configs.scss' as config;
+@use 'styles/index.scss';
 
 header {
     height: 80px;
-    background-color: $CERULEAN;
-    color: $FOREGROUND_WHITE;
+    background-color: config.$CERULEAN;
+    color: config.$FOREGROUND_WHITE;
     position: sticky;
     top: 0;
     cursor: default;
-
+    
     // ****************************************
     #logo-img {
         max-height: 50px;
         margin: 5px;
         filter: invert(95%);
     }
-
+    
     #search-img {
         max-height: 50px;
         margin: 5px;
@@ -183,19 +29,8 @@ main {
     margin: auto;
 }
 
-.card {
-    padding: 15px;
-    border-radius: 15px;
-    @include shadow_border(5px, 3px);
-    background-color: $FOREGROUND_WHITE;
-    box-sizing: border-box;
-}
-
-// end-content
 // ********************************************************************************
 // begin project-wide styles
-
-
 
 .styled-table {
     padding: 0px;
@@ -213,7 +48,7 @@ main {
         thead {
             tr {
                 background-color: #1177aa;
-                color: $FOREGROUND_WHITE;
+                color: config.$FOREGROUND_WHITE;
 
                 th {
                     position: sticky;
@@ -225,7 +60,7 @@ main {
 
         tbody {
             tr {
-                border-bottom: 1px solid $FOREGROUND_WHITE;
+                border-bottom: 1px solid config.$FOREGROUND_WHITE;
             }
 
             tr:nth-of-type(even) {
@@ -266,86 +101,5 @@ main {
 
     div {
         margin-left: 10px;
-    }
-}
-
-#container {
-    width: 100%;
-    max-width: 100%;
-    min-height: 500px;
-    min-width: 400px;
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#add-user-card {
-    width: 700px;
-    margin-top: 50px;
-    border-radius: 15px;
-    @include shadow_border(8px, 6px);
-    background-color: $FOREGROUND_WHITE;
-    box-sizing: border-box;
-    overflow: hidden;
-
-    #card-header {
-        background-color: $CERULEAN;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 100%;
-        height: 60px;
-        
-        div {
-            font-size: 20px;
-            color: $FOREGROUND_WHITE;
-            text-align: center;
-            font-weight: bold;
-        }
-    }
-    
-    form {
-        margin: 20px;
-        color: $GRAY;
-
-        input[type=text] {
-            color: $FOREGROUND_DARK;
-            height: 35px;
-            width: 100%;
-            border: 2px solid $GRAY;
-            box-sizing: border-box;
-            border-radius: 10px;
-            text-align: left;
-            padding: 0 10px;
-            background-color: inherit;
-        
-            &:focus {
-                outline: none;
-            }
-        }
-
-        label {
-            font-size: 14px;
-            margin-bottom: 5px;
-            margin-left: 5px;
-        }
-    }
-
-    .width-30 { width: 30%; }
-    .width-40 { width: 40%; }
-    .width-50 { width: 50%; }
-    .width-60 { width: 60%; }
-    .width-70 { width: 70%; }
-}
-
-#img-upload-canvas {
-    $IMAGE_WIDTH: 80px;
-    img {
-        width: $IMAGE_WIDTH;
-        height: $IMAGE_WIDTH;
-        border-radius: 50%;
     }
 }

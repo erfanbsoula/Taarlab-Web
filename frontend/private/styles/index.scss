@@ -1,0 +1,60 @@
+// begin dependencies
+
+@use 'configs.scss' as config;
+@use 'sidebar/sidebar-menu.scss';
+@use 'buttons/buttons.scss';
+@use 'addUser/add-user.scss';
+
+// end dependencies
+// ********************************************************************************
+// begin global
+
+* {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+    background-color: config.$BAKCGROUND1;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.column-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.width-full { width: 100%; }
+.stretch { align-items: stretch; }
+.align-self-2start { align-self: flex-start; }
+.center-text { text-align: center; }
+
+br { margin: 5px 0; }
+.space-left { margin-left: 10px; }
+.space-right { margin-right: 10px; }
+.space-top { margin-top: 15px; }
+.margin-sides { margin: 0 20px; }
+
+.card {
+    padding: 15px;
+    border-radius: 15px;
+    @include config.shadow_border(5px, 3px);
+    background-color: config.$FOREGROUND_WHITE;
+    box-sizing: border-box;
+}
+
+// end global
+// ********************************************************************************
