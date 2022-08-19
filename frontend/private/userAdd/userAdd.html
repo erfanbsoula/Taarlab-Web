@@ -3,9 +3,9 @@
 <head>
     <title>HWM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles/datePicker/material_blue.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/userAdd/userAdd.css">
+    <link rel="stylesheet" href="/components/calendar/flatpicker-blueTheme.css">
 </head>
 
 <body>
@@ -33,10 +33,10 @@
 					<span></span>
 				</div>
 				<div class="width-full row-flex center">
-					<h2 class="center-text" id="heading">Add User</h2>
+					<h2 class="center-text" id="heading"></h2>
 				</div>
 				<!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
-				<img src="assets/icons/ai.png" alt="icon" id="logo-img">
+				<img src="/assets/icons/ai.png" alt="icon" id="logo-img">
 			</header>
 			<main class="width-full">
 				<div id="form-container">
@@ -45,7 +45,7 @@
 							<div>User Form</div>
 						</div>
 						<div id="card-body">
-							<form method="post" action="signup">
+							<form id="userForm">
 								<div class="row-flex width-full center">
 									<div class="space-right width-40">
 										<label for="firstname">first name:</label>
@@ -69,9 +69,9 @@
 								</div>
 								<br>
 								<div class="row-flex width-full center" id="img-upload-canvas">
-									<img src="assets/profile/taylor.webp" alt="icon" class="space-right">
+									<img src="/assets/profile/taylor.webp" alt="icon" class="space-right" id="profilePrev">
 									<p>Upload Profile Picture:</p>
-									<input type="file" id="profilePic" accept="image/jpg image/png" style="display: none;">
+									<input type="file" id="profilePic" name="profilePic" accept="image/jpg image/png" style="width: 0.1px; height: 0.1px; opacity: 0;">
 									<div class="button-magic space-left" id="uploadBtn">
 										select
 										<span></span>
@@ -101,7 +101,7 @@
 		</div>
 	</div>
 </body>
-<script src="scripts/sidebar/sidebar-menu.js"></script>
-<script src="scripts/datePicker/flatPicker.min.js"></script>
-<script src="scripts/script.js"></script>
+<script src="/components/sidebar/sidebar-menu.js"></script>
+<script src="/components/calendar/flatPicker.min.js"></script>
+<script src="/userAdd/userAdd.js"></script>
 </html>

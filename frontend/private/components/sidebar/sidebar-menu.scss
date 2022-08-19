@@ -1,4 +1,4 @@
-@use '../configs.scss' as config;
+@use '../configs.scss' as CONFIG;
 @use 'menu-btn.scss';
 
 #sidebar {
@@ -7,12 +7,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    color: config.$FOREGROUND_DARK;
-    background-color: config.$BAKCGROUND2;
+    color: CONFIG.$FOREGROUND_DARK;
+    background-color: CONFIG.$BAKCGROUND2;
     transition: width 500ms;
     border-style: solid;
     border-width: 0 1px 0 0;
-    border-color: config.$SOLID_BORDER;
+    border-color: CONFIG.$SOLID_BORDER;
 }
 
 #sidebar-top {
@@ -22,7 +22,7 @@
     height: 80px;
     top: 0;
     left: 0;
-    background-color: config.$CERULEAN;
+    background-color: CONFIG.$CERULEAN;
 }
 
 #sidebar-content-container {
@@ -42,7 +42,7 @@
 
 #sidebar-title {
     text-align: center;
-    color: config.$FOREGROUND_WHITE;
+    color: CONFIG.$FOREGROUND_WHITE;
     transition: color 300ms ease-out;
     
     &:hover {
@@ -64,8 +64,8 @@ nav {
         transition: border 200ms ease;
 
         &:hover {
-            @include config.shadow_border(3px, 1px);
-            background-color: config.$FOREGROUND_WHITE;
+            @include CONFIG.shadow_border(3px, 1px);
+            background-color: CONFIG.$FOREGROUND_WHITE;
         }
     }
 }

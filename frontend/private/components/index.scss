@@ -1,9 +1,8 @@
 // begin dependencies
 
-@use 'configs.scss' as config;
+@use 'configs.scss' as CONFIG;
 @use 'sidebar/sidebar-menu.scss';
 @use 'buttons/buttons.scss';
-@use 'addUser/add-user.scss';
 
 // end dependencies
 // ********************************************************************************
@@ -15,7 +14,7 @@
 
 body {
     margin: 0px;
-    background-color: config.$BAKCGROUND1;
+    background-color: CONFIG.$BAKCGROUND1;
 }
 
 .row-flex {
@@ -51,10 +50,38 @@ br { margin: 5px 0; }
 .card {
     padding: 15px;
     border-radius: 15px;
-    @include config.shadow_border(5px, 3px);
-    background-color: config.$FOREGROUND_WHITE;
+    @include CONFIG.shadow_border(5px, 3px);
+    background-color: CONFIG.$FOREGROUND_WHITE;
     box-sizing: border-box;
 }
 
 // end global
 // ********************************************************************************
+
+header {
+    height: 80px;
+    background-color: CONFIG.$CERULEAN;
+    color: CONFIG.$FOREGROUND_WHITE;
+    position: sticky;
+    top: 0;
+    cursor: default;
+    
+    // ****************************************
+    #logo-img {
+        max-height: 50px;
+        margin: 5px;
+        filter: invert(95%);
+    }
+    
+    #search-img {
+        max-height: 50px;
+        margin: 5px;
+        filter: invert(95%);
+    }
+    // ****************************************
+}
+
+main {
+    max-width: 1720px;
+    margin: auto;
+}
