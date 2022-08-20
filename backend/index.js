@@ -5,7 +5,7 @@ const MongoStore = require('connect-mongo');
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const router = require('./routs.js');
+const router = require('./routs/routs.js');
 
 const app = express();
 const port = 3000;

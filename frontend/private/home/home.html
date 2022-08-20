@@ -8,39 +8,44 @@
 </head>
 
 <body>
+<header class="width-full row-flex">
+   <div class="space-left" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+   </div>
+   <div>
+      <h2 id="header-title">TAARLAB</h2>
+   </div>
+   <div class="width-full"></div>
+   <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+   <img src="/assets/icons/ai.png" alt="icon" class="header-img">
+</header>
 <div class="width-full row-flex">
    <div id="sidebar">
-      <div id="sidebar-top"></div>
       <div id="sidebar-content-container">
-         <div class="row-flex center" id="sidebar-title-container">
-            <h2 id="sidebar-title">TAARLAB</h2>
-         </div>
-         <br>
          <nav id="navbar">
-            <div>Menu Item 1</div>
-            <div>Menu Item 2</div>
-            <div>Menu Item 3</div>
+            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Add New User</div>
+            </div>
+            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Add New User</div>
+            </div>
+            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Add New User</div>
+            </div>
          </nav>
       </div>
    </div>
    <div class="width-full" id="content-container">
-      <header class="width-full row-flex">
-         <div class="space-left" id="menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-         </div>
-         <div class="width-full row-flex center">
-            <h2 class="center-text" id="heading">Device Setup</h2>
-         </div>
-         <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
-         <img src="/assets/icons/ai.png" alt="icon" id="logo-img">
-      </header>
       <main class="width-full">
-         <div class="row-flex space-top">
-            <div class="align-self-2start margin-sides column-flex center" style="width: 70%;">
-               <br>
+         <br>
+         <div class="row-flex space-top center">
+            <div class="align-self-2start margin-sides column-flex center" style="width: 800px;">
                <div class="card styled-table">
                   <table>
                      <thead>
@@ -48,7 +53,6 @@
                            <th>Profile</th>
                            <th>Date and Time</th>
                            <th>Progress</th>
-                           <th>Picture</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -59,7 +63,6 @@
                            </td>
                            <td>2022/7/19 15:20</td>
                            <td>90%</td>
-                           <td>pic</td>
                         </tr>
                         <tr>
                            <td class="profile">
@@ -68,7 +71,6 @@
                            </td>
                            <td>2022/7/18 16:31</td>
                            <td>100%</td>
-                           <td>pic</td>
                         </tr>
                         <tr>
                            <td class="profile">
@@ -77,7 +79,6 @@
                            </td>
                            <td>2022/7/17 07:53</td>
                            <td>70%</td>
-                           <td>pic</td>
                         </tr>
                         <tr>
                            <td class="profile">
@@ -86,7 +87,6 @@
                            </td>
                            <td>2022/7/18 13:47</td>
                            <td>80%</td>
-                           <td>pic</td>
                         </tr>
                         <tr>
                            <td class="profile">
@@ -95,7 +95,6 @@
                            </td>
                            <td>2022/7/17 14:09</td>
                            <td>90%</td>
-                           <td>pic</td>
                         </tr>
                         <tr>
                            <td class="profile">
@@ -104,7 +103,6 @@
                            </td>
                            <td>2022/7/17 9:35</td>
                            <td>100%</td>
-                           <td>pic</td>
                         </tr>
                         <tr>
                            <td class="profile">
@@ -113,22 +111,19 @@
                            </td>
                            <td>2022/7/16 17:18</td>
                            <td>100%</td>
-                           <td>pic</td>
                         </tr>
                      </tbody>
                   </table>
                </div>
                <br><br>
             </div>
-            <div class="align-self-2start margin-sides column-flex center" style="width: 30%;">
-               <br>
+            <div class="align-self-2start space-left column-flex center" style="width: 300px;">
                <div class="width-full card">
-                  <canvas id="myChart" style="width: 200px; height: 200px; max-width: 100%;"></canvas>
+                  <canvas id="myChart"></canvas>
                </div>
                <br><br>
-               <div class="card">
-                  <span>Total Entries: 7</span>
-                  <span class="space-left">Total Entries Today: 2</span>
+               <div class="width-full card center-text">
+                  <span>total entries: 7</span>
                </div>
             </div>
          </div>
@@ -138,4 +133,6 @@
 </body>
 <!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
 <script src="/components/sidebar/sidebar-menu.js"></script>
+<script src="/components/chart/chart.min.js"></script>
+<script src="/home/home.js"></script>
 </html>

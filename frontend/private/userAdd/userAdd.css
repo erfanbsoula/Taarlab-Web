@@ -76,24 +76,14 @@
   width: 0px;
   height: 100%;
   position: fixed;
-  top: 0;
+  top: 70px;
   left: 0;
   color: #1F2535;
-  background-color: #E5E5E5;
+  background-color: #F1F1F1;
   transition: width 500ms;
   border-style: solid;
   border-width: 0 1px 0 0;
   border-color: #D5D5D5;
-}
-
-#sidebar-top {
-  position: fixed;
-  z-index: -1;
-  width: 100%;
-  height: 80px;
-  top: 0;
-  left: 0;
-  background-color: #4484CE;
 }
 
 #sidebar-content-container {
@@ -103,39 +93,25 @@
   height: 100%;
 }
 
-#sidebar-title-container {
-  width: 100%;
-  padding-top: 5px;
-  height: 75px;
-  cursor: default;
-  visibility: inherit;
-}
-
-#sidebar-title {
-  text-align: center;
-  color: #F5F5F5;
-  transition: color 300ms ease-out;
-}
-#sidebar-title:hover {
-  color: #F9CF00;
-}
-
-nav div {
-  margin: 10px;
-  padding: 15px;
-  font-size: 20px;
+nav .nav-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30px 20px 0px 20px;
+  padding: 10px 0px;
+  font-size: 19px;
+  color: #606060;
   box-sizing: border-box;
-  display: block;
   visibility: inherit;
-  border: solid rgba(0, 0, 0, 0) 1px;
-  border-radius: 10px;
+  border-bottom: solid #D5D5D5 1px;
   cursor: pointer;
-  transition: border 200ms ease;
 }
-nav div:hover {
-  border: solid rgba(0, 0, 0, 0.2) 1px;
-  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
-  background-color: #F5F5F5;
+nav .nav-item .pointer {
+  visibility: hidden;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #4a8fdd;
 }
 
 #content-container {
@@ -282,7 +258,7 @@ nav div:hover {
 
 body {
   margin: 0px;
-  background-color: #F1F1F1;
+  background-color: #E8E9EB;
 }
 
 .row-flex {
@@ -343,29 +319,39 @@ br {
 .card {
   padding: 15px;
   border-radius: 15px;
-  border: solid rgba(0, 0, 0, 0.2) 1px;
-  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.15);
-  background-color: #F5F5F5;
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.15);
+  border: 0px;
+  background-color: #F7F7F7;
   box-sizing: border-box;
+  transition: box-shadow 300ms ease-out;
+}
+.card:hover {
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.15);
 }
 
 header {
-  height: 80px;
-  background-color: #4484CE;
-  color: #F5F5F5;
+  height: 70px;
+  background-color: #4a8fdd;
+  color: #F7F7F7;
   position: sticky;
   top: 0;
   cursor: default;
 }
-header #logo-img {
+header .header-img {
   max-height: 50px;
   margin: 5px;
   filter: invert(95%);
 }
-header #search-img {
-  max-height: 50px;
-  margin: 5px;
-  filter: invert(95%);
+header #header-title {
+  margin-left: 40px;
+  text-align: center;
+  color: #F7F7F7;
+  transition: color 300ms ease-out;
+}
+header #header-title:hover {
+  color: #F9CF00;
 }
 
 main {
@@ -388,14 +374,14 @@ main {
   width: 700px;
   margin-top: 50px;
   border-radius: 15px;
-  border: solid rgba(0, 0, 0, 0.2) 1px;
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
   box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.15);
-  background-color: #F5F5F5;
+  background-color: #F7F7F7;
   box-sizing: border-box;
   overflow: hidden;
 }
 #add-user-card #card-header {
-  background-color: #4484CE;
+  background-color: #4a8fdd;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -406,7 +392,7 @@ main {
 }
 #add-user-card #card-header div {
   font-size: 20px;
-  color: #F5F5F5;
+  color: #F7F7F7;
   text-align: center;
   font-weight: bold;
 }

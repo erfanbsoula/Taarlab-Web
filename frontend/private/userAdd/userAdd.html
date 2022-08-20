@@ -9,97 +9,102 @@
 </head>
 
 <body>
-	<div class="width-full row-flex">
-		<div id="sidebar">
-			<div id="sidebar-top"></div>
-			<div id="sidebar-content-container">
-				<div class="row-flex center" id="sidebar-title-container">
-					<h2 id="sidebar-title">TAARLAB</h2>
+<header class="width-full row-flex">
+	<div class="space-left" id="menu-btn">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<div>
+		<h2 id="header-title">TAARLAB</h2>
+	</div>
+	<div class="width-full"></div>
+	<!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+	<img src="/assets/icons/ai.png" alt="icon" class="header-img">
+</header>
+<div class="width-full row-flex">
+	<div id="sidebar">
+		<div id="sidebar-content-container">
+			<nav id="navbar">
+				<div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+					<div class="pointer"></div>
+					<div class="space-left">Add New User</div>
 				</div>
-				<br>
-				<nav id="navbar">
-					<div>Menu Item 1</div>
-					<div>Menu Item 2</div>
-					<div>Menu Item 3</div>
-				</nav>
-			</div>
-		</div>
-		<div class="width-full" id="content-container">
-			<header class="width-full row-flex">
-				<div class="space-left" id="menu-btn">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+				<div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+					<div class="pointer"></div>
+					<div class="space-left">Add New User</div>
 				</div>
-				<div class="width-full row-flex center">
-					<h2 class="center-text" id="heading"></h2>
+				<div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+					<div class="pointer"></div>
+					<div class="space-left">Add New User</div>
 				</div>
-				<!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
-				<img src="/assets/icons/ai.png" alt="icon" id="logo-img">
-			</header>
-			<main class="width-full">
-				<div id="form-container">
-					<div id="add-user-card">
-						<div id="card-header">
-							<div>User Form</div>
-						</div>
-						<div id="card-body">
-							<form id="userForm">
-								<div class="row-flex width-full center">
-									<div class="space-right width-40">
-										<label for="firstname">first name:</label>
-										<input id="firstname" name="firstname" type="text">
-									</div>
-									<div class="space-left width-60">
-										<label for="lastname">last name:</label>
-										<input id="lastname" name="lastname" type="text">
-									</div>
-								</div>
-								<br>
-								<div class="row-flex width-full">
-									<div class="space-right width-50">
-										<label for="nationalID">national ID:</label>
-										<input id="nationalID" name="nationalID" type="text">
-									</div>
-									<div class="space-left width-30" id="date-canvas">
-										<label for="dateInput">date of birth:</label>
-										<input type="date"  id="dateInput" name="dateInput">
-									</div>
-								</div>
-								<br>
-								<div class="row-flex width-full center" id="img-upload-canvas">
-									<img src="/assets/profile/taylor.webp" alt="icon" class="space-right" id="profilePrev">
-									<p>Upload Profile Picture:</p>
-									<input type="file" id="profilePic" name="profilePic" accept="image/jpg image/png" style="width: 0.1px; height: 0.1px; opacity: 0;">
-									<div class="button-magic space-left" id="uploadBtn">
-										select
-										<span></span>
-										<span></span>
-										<span></span>
-										<span></span>
-									</div>
-								</div>
-								<br>
-								<div class="row-flex width-full">
-									<div class="width-full space-right">
-										<label for="username">username:</label>
-										<input id="username" name="username" type="text">
-									</div>
-									<div class="width-full space-left">
-										<label for="password">password:</label>
-										<input id="password" name="password" type="text">
-									</div>
-								</div>
-								<br>
-								<input type="submit" class="button-gradient" value="Signup">
-							</form>
-						</div>
-					</div>
-				</div>
-			</main>
+			</nav>
 		</div>
 	</div>
+	<div class="width-full" id="content-container">
+		<main class="width-full">
+			<div id="form-container">
+				<div id="add-user-card">
+					<div id="card-header">
+						<div>User Form</div>
+					</div>
+					<div id="card-body">
+						<form id="userForm">
+							<div class="row-flex width-full center">
+								<div class="space-right width-40">
+									<label for="firstname">first name:</label>
+									<input id="firstname" name="firstname" type="text">
+								</div>
+								<div class="space-left width-60">
+									<label for="lastname">last name:</label>
+									<input id="lastname" name="lastname" type="text">
+								</div>
+							</div>
+							<br>
+							<div class="row-flex width-full">
+								<div class="space-right width-50">
+									<label for="nationalID">national ID:</label>
+									<input id="nationalID" name="nationalID" type="text">
+								</div>
+								<div class="space-left width-30" id="date-canvas">
+									<label for="dateInput">date of birth:</label>
+									<input type="date"  id="dateInput" name="dateInput">
+								</div>
+							</div>
+							<br>
+							<div class="row-flex width-full center" id="img-upload-canvas">
+								<img src="/assets/profile/taylor.webp" alt="icon" class="space-right" id="profilePrev">
+								<p>Upload Profile Picture:</p>
+								<input type="file" id="profilePic" name="profilePic" accept="image/jpg image/png" style="width: 0.1px; height: 0.1px; opacity: 0;">
+								<div class="button-magic space-left" id="uploadBtn">
+									select
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+							</div>
+							<br>
+							<div class="row-flex width-full">
+								<div class="width-full space-right">
+									<label for="username">username:</label>
+									<input id="username" name="username" type="text">
+								</div>
+								<div class="width-full space-left">
+									<label for="password">password:</label>
+									<input id="password" name="password" type="text">
+								</div>
+							</div>
+							<br>
+							<input type="submit" class="button-gradient" value="Signup">
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
 </body>
 <script src="/components/sidebar/sidebar-menu.js"></script>
 <script src="/components/calendar/flatPicker.min.js"></script>

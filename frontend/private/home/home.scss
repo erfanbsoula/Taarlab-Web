@@ -4,8 +4,7 @@
 .styled-table {
     padding: 0px;
     width: 100%;
-    overflow: scroll;
-    height: 300px;
+    overflow: hidden;
     border: 0;
 
     table {
@@ -16,12 +15,12 @@
 
         thead {
             tr {
-                background-color: #1177aa;
+                background-color: CONFIG.$CERULEAN;
                 color: CONFIG.$FOREGROUND_WHITE;
 
                 th {
                     position: sticky;
-                    background-color: #1177aa;
+                    background-color: CONFIG.$CERULEAN;
                     top: 0;
                 } 
             }           
@@ -30,10 +29,11 @@
         tbody {
             tr {
                 border-bottom: 1px solid CONFIG.$FOREGROUND_WHITE;
+                background-color: CONFIG.$FOREGROUND_WHITE;
             }
 
             tr:nth-of-type(even) {
-                background-color: #EDEDED;
+                background-color: #EEEEEE;
             }
 
             .active-row {
@@ -46,11 +46,6 @@
             padding: 12px 15px;
             text-align: center;
         }
-
-        // tr th:nth-of-type(1), td:nth-of-type(1) {
-        //     text-align: left;
-        //     padding-left: 30px;
-        // }
     }
 }
 

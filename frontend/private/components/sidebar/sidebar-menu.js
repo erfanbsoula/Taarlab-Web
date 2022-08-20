@@ -11,8 +11,17 @@ document.getElementById("menu-btn").addEventListener("click", (ev) => {
     } else {
         document.getElementById("sidebar-content-container").style.transitionDelay = "500ms";
         document.getElementById("sidebar-content-container").style.visibility = "visible";
-        document.getElementById("content-container").style.marginLeft = "200px";
-        document.getElementById("sidebar").style.width = "200px";
+        document.getElementById("content-container").style.marginLeft = "230px";
+        document.getElementById("sidebar").style.width = "230px";
         menuOpen = true;
     }
 })
+
+document.querySelectorAll("nav .nav-item").forEach((element, key, parent) => {
+    element.addEventListener('mouseenter', (event) => {
+        event.target.children[0].style.visibility = "visible";
+    });
+    element.addEventListener('mouseleave', (event) => {
+        event.target.children[0].style.visibility = "hidden";
+    });
+});

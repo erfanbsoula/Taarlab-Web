@@ -14,7 +14,7 @@
 
 body {
     margin: 0px;
-    background-color: CONFIG.$BAKCGROUND1;
+    background-color: CONFIG.$BAKCGROUND2;
 }
 
 .row-flex {
@@ -50,16 +50,22 @@ br { margin: 5px 0; }
 .card {
     padding: 15px;
     border-radius: 15px;
-    @include CONFIG.shadow_border(5px, 3px);
+    @include CONFIG.shadow_border(6px, 2px);
+    border: 0px;
     background-color: CONFIG.$FOREGROUND_WHITE;
     box-sizing: border-box;
+    transition: box-shadow 300ms ease-out;
+
+    &:hover {
+        @include CONFIG.shadow_border(8px, 6px);
+    }
 }
 
 // end global
 // ********************************************************************************
 
 header {
-    height: 80px;
+    height: 70px;
     background-color: CONFIG.$CERULEAN;
     color: CONFIG.$FOREGROUND_WHITE;
     position: sticky;
@@ -67,16 +73,21 @@ header {
     cursor: default;
     
     // ****************************************
-    #logo-img {
+    .header-img {
         max-height: 50px;
         margin: 5px;
         filter: invert(95%);
     }
-    
-    #search-img {
-        max-height: 50px;
-        margin: 5px;
-        filter: invert(95%);
+
+    #header-title {
+        margin-left: 40px;
+        text-align: center;
+        color: CONFIG.$FOREGROUND_WHITE;
+        transition: color 300ms ease-out;
+        
+        &:hover {
+            color: #F9CF00;
+        }
     }
     // ****************************************
 }

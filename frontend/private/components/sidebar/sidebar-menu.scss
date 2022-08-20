@@ -5,24 +5,14 @@
     width: 0px;
     height: 100%;
     position: fixed;
-    top: 0;
+    top: 70px;
     left: 0;
     color: CONFIG.$FOREGROUND_DARK;
-    background-color: CONFIG.$BAKCGROUND2;
+    background-color: CONFIG.$BAKCGROUND1;
     transition: width 500ms;
     border-style: solid;
     border-width: 0 1px 0 0;
     border-color: CONFIG.$SOLID_BORDER;
-}
-
-#sidebar-top {
-    position: fixed;
-    z-index: -1;
-    width: 100%;
-    height: 80px;
-    top: 0;
-    left: 0;
-    background-color: CONFIG.$CERULEAN;
 }
 
 #sidebar-content-container {
@@ -32,40 +22,26 @@
     height: 100%;
 }
 
-#sidebar-title-container {
-    width: 100%;
-    padding-top: 5px;
-    height: 75px;
-    cursor: default;
-    visibility: inherit;
-}
-
-#sidebar-title {
-    text-align: center;
-    color: CONFIG.$FOREGROUND_WHITE;
-    transition: color 300ms ease-out;
-    
-    &:hover {
-        color: #F9CF00;
-    }
-}
-
 nav {
-    div {
-        margin: 10px;
-        padding: 15px;
-        font-size: 20px;
+    .nav-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 30px 20px 0px 20px;
+        padding: 10px 0px;
+        font-size: 19px;
+        color: CONFIG.$DARK_GRAY;
         box-sizing: border-box;
-        display: block;
         visibility: inherit;
-        border: solid rgba(0, 0, 0, 0.0) 1px;
-        border-radius: 10px;
+        border-bottom: solid CONFIG.$SOLID_BORDER 1px;
         cursor: pointer;
-        transition: border 200ms ease;
 
-        &:hover {
-            @include CONFIG.shadow_border(3px, 1px);
-            background-color: CONFIG.$FOREGROUND_WHITE;
+        .pointer {
+            visibility: hidden;
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background-color: CONFIG.$CERULEAN;
         }
     }
 }

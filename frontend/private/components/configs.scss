@@ -1,15 +1,15 @@
 // ********************************************************************************
 // begin color palette:
 
-$CERULEAN: #4484CE;
+$CERULEAN: #4a8fdd;
 $MELROSE: #D2BDFF;
 $LIGHT_TANGERINE: #F9CF00;
 $TANGERINE: #F19F4D;
 
 $FOREGROUND_DARK: #1F2535; 
-$FOREGROUND_WHITE: #F5F5F5;
+$FOREGROUND_WHITE: #F7F7F7;
 $BAKCGROUND1: #F1F1F1;
-$BAKCGROUND2: #E5E5E5;
+$BAKCGROUND2: #E8E9EB;
 
 $SOLID_BORDER: #D5D5D5;
 $GRAY: #858585;
@@ -20,7 +20,7 @@ $DARK_GRAY: #606060;
 // begin mixins
 
 @mixin shadow_border($blur_radius, $shadow_radius) {
-    border: solid rgba(0, 0, 0, 0.2) 1px;
+    border: inset solid rgba(0, 0, 0, 0.2) 1px;
     box-shadow: 0px 0px $blur_radius $shadow_radius rgba(0, 0, 0, 0.15);
 }
 
