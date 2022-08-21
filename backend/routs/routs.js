@@ -76,11 +76,20 @@ router.get('/print', (req, res) => {
 	res.send("done!")
 })
 
-router.post("/add-user", upload.array("files"), (req, res) => {
-    console.log(req.body);
-    console.log(req.files);
-    res.json({ message: "Successfully uploaded files" });
-})
+router.post("/add-user", upload.single("profilePic"),
+	(err, req, res, next) => {
+		if (err) {
+			console.log(err.message);
+			res.status(400).send("Server couldn't find the profile picture!");
+		}
+		else next();
+	},
+	(req, res) => {
+		console.log(req.body);
+		console.log(req.file);
+		res.send('{"status" : "ok"}')
+	}
+);
 
 // app.all('*', (req, res) => {
 // 	res.status(404);

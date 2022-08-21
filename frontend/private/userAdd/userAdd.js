@@ -1,3 +1,5 @@
+let messageBox = new MessageBox();
+
 const fp = flatpickr("#dateInput", {
     enableTime: false,
     position: 'below left',
@@ -14,25 +16,49 @@ const fp = flatpickr("#dateInput", {
 });
 
 document.getElementById("profilePic").addEventListener('change', (event) => {
-    const file = document.getElementById("profilePic").files[0]
+    const file = document.getElementById("profilePic").files[0];
     if (file) {
-        document.getElementById("profilePrev").src = URL.createObjectURL(file)
+        document.getElementById("profilePrev").src = URL.createObjectURL(file);
     }
 })
 
+function clearForm() {
+    document.getElementById("firstname").value = "";
+    document.getElementById("lastname").value = "";
+    document.getElementById("nationalID").value = "";
+    document.getElementById("dateInput").value = "";
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("profilePrev").src = "/assets/profile/taylor.webp";
+    document.getElementById("profilePic").files.clear();
+}
+
 document.getElementById("userForm").addEventListener('submit', (event) => {
     event.preventDefault();
-
-    const files = document.getElementById("profilePic");
+    
     const formData = new FormData();
-    for(let i =0; i < files.files.length; i++) {
-            formData.append("files", files.files[i]);
-    }
+    formData.append("profilePic", document.getElementById("profilePic").files[0]);
+    formData.append("firstname",  document.getElementById("firstname").value);
+    formData.append("lastname",  document.getElementById("lastname").value);
+    formData.append("nationalID",  document.getElementById("nationalID").value);
+    formData.append("birthDate",  document.getElementById("dateInput").value);
+    formData.append("username",  document.getElementById("username").value);
+    formData.append("password",  document.getElementById("password").value);
+    
     fetch("http://localhost:3000/add-user", {
         method: 'POST',
         body: formData,
     })
-    .then((res) => console.log(res))
+    .then((res) => res.json())
+    .then((json) => {
+        if (json.status == "ok") {
+            messageBox.showSuccess("Signed up user successfuly!");
+            clearForm();
+        }
+        else {
+            messageBox.showFailure("Server didn't accept the request !");
+        }
+    })
     .catch((err) => ("Error occured", err));
 })
 
