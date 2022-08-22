@@ -50,22 +50,22 @@
 						<div>User Form</div>
 					</div>
 					<div id="card-body">
-						<form id="userForm" method="post" action="/add-user" enctype="multipart/form-data">
+						<form id="userForm" method="post" action="/api/add-user" enctype="multipart/form-data">
 							<div class="row-flex width-full center">
 								<div class="space-right width-40">
 									<label for="firstname">first name:</label>
-									<input id="firstname" name="firstname" type="text" required>
+									<input id="firstname" name="firstname" type="text" maxlength="32" required>
 								</div>
 								<div class="space-left width-60">
 									<label for="lastname">last name:</label>
-									<input id="lastname" name="lastname" type="text" required>
+									<input id="lastname" name="lastname" type="text" maxlength="32" required>
 								</div>
 							</div>
 							<br>
 							<div class="row-flex width-full">
 								<div class="space-right width-50">
 									<label for="nationalID">national ID:</label>
-									<input id="nationalID" name="nationalID" type="text" required>
+									<input id="nationalID" name="nationalID" type="text" maxlength="16" required>
 								</div>
 								<div class="space-left width-30" id="date-canvas">
 									<label for="dateInput">date of birth:</label>
@@ -89,15 +89,18 @@
 							<div class="row-flex width-full">
 								<div class="width-full space-right">
 									<label for="username">username:</label>
-									<input id="username" name="username" type="text" required>
+									<input id="username" name="username" type="text" maxlength="32" required>
 								</div>
 								<div class="width-full space-left">
 									<label for="password">password:</label>
-									<input id="password" name="password" type="text" required>
+									<input id="password" name="password" type="text" maxlength="32" required>
 								</div>
 							</div>
 							<br>
-							<input type="submit" class="button-gradient" value="Signup" style="margin-left: auto;">
+							<div class="row-flex width-full">
+								<input type="submit" class="button-gradient" value="Signup">
+								<div id="formError"></div>
+							</div>
 						</form>
 					</div>
 				</div>

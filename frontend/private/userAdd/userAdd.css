@@ -461,7 +461,6 @@ main {
 #add-user-card #card-body {
   width: 80%;
   margin: 20px auto;
-  margin-bottom: 30px;
 }
 #add-user-card form {
   color: #858585;
@@ -484,6 +483,12 @@ main {
   font-size: 14px;
   margin-bottom: 5px;
   margin-left: 5px;
+}
+#add-user-card form #formError {
+  align-self: center;
+  margin-left: 25px;
+  font-size: 15px;
+  color: rgb(200, 50, 0);
 }
 #add-user-card .width-30 {
   width: 30%;
