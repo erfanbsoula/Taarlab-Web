@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const passport = require("passport");
 
-const authenticator = express.Router();
+const router = express.Router();
 
 // **********************************************************************
 // User Authentication process and login page
@@ -10,7 +10,7 @@ function isAuthenticated(req) {
     return req.session.passport && req.session.passport.user;
 }
 
-authenticator.get('/login-failure', (req, res) => {
+router.get('/login-failure', (req, res) => {
 	res.send('login failed!')
 })
 
@@ -20,11 +20,11 @@ function canLogin(req, res, next) {
     else next();
 }
 
-authenticator.get('/login', canLogin, (req, res) => {
+router.get('/login', canLogin, (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'public', 'login', 'login.html'));
 });
 
-authenticator.post('/login', canLogin,
+router.post('/login', canLogin,
     passport.authenticate('local', {
         // keepSessionInfo: true,
         failureRedirect: '/login-failure',
@@ -32,10 +32,10 @@ authenticator.post('/login', canLogin,
     })
 );
 
-authenticator.use((req, res, next) => {
+router.use((req, res, next) => {
     if (!isAuthenticated(req))
         res.redirect('/login');
     else next();
 })
 
-module.exports.authenticator = authenticator;
+module.exports.router = router;

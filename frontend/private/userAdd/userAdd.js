@@ -58,7 +58,6 @@ function hasLengthError(str, name, max=32, min=3) {
 function getFormData() {
     let firstname = document.getElementById("firstname").value;
     if (hasLengthError(firstname, "First name")) return false;
-
     if (!/^[a-zA-Z\s]+$/g.test(firstname)) {
         error("First name can only contain letters and spaces!");
         return false;
@@ -66,7 +65,6 @@ function getFormData() {
 
     let lastname = document.getElementById("lastname").value;
     if (hasLengthError(lastname, "Last name")) return false;
-
     if (!/^[a-zA-Z\s]+$/g.test(lastname)) {
         error("Last name can only contain letters and spaces!");
         return false;
@@ -74,7 +72,6 @@ function getFormData() {
 
     let nationalID = document.getElementById("nationalID").value;
     if (hasLengthError(nationalID, "National ID", 16)) return false;
-    
     if (!/^[0-9]+$/g.test(nationalID)) {
         error("National ID can only contain numbers!");
         return false;
@@ -94,13 +91,8 @@ function getFormData() {
 
     let username = document.getElementById("username").value;
     if (hasLengthError(username, "Username")) return false;
-
     if (/^[0-9]/g.test(username)) {
         error("Username can't start with a number!");
-        return false;
-    }
-    else if (/^[_]/g.test(username) || /[_]$/g.test(username)) {
-        error("Username can't start or end with underlines!");
         return false;
     }
     else if (!/^[a-zA-Z0-9_]+$/g.test(username)) {
@@ -110,7 +102,6 @@ function getFormData() {
 
     let password = document.getElementById("password").value;
     if (hasLengthError(password, "Password")) return false;
-
     if (/[\0\n]/g.test(password)) {
         error("using '\\0' and '\\n' is not allowed in the password!");
         return false;

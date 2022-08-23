@@ -1,18 +1,18 @@
 const path = require('path');
 const express = require('express');
-const client = require('../database.js').client;
-const printdb = require('../database.js').printdb;
-const authenticator = require("./authenticate.js").authenticator;
+const client = require('./database.js').client;
+const printdb = require('./database.js').printdb;
 
 const router = express.Router();
 
 router.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'public')));
-router.use(authenticator);
+router.use(require("./auth.js").router);
 router.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'private')));
 router.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'private', 'home', 'home.html'));
 })
-router.use(require("./users.js").router);
+router.use(require("./users/users.js").router);
+router.use(require("./users/get-user.js").router);
 
 // **********************************************************************
 // API for posting data to the DataBase

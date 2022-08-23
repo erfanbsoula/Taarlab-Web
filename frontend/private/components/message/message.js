@@ -33,16 +33,18 @@ class MessageBox {
             console.log("invalid index for messageBox!");
             return;
         }
+        this.boxs[boxIndex].classList.remove("failure");
         this.boxs[boxIndex].classList.add("success");
         this.boxs[boxIndex].querySelector(".message-body").innerText = message;
         this.boxs[boxIndex].style.right = "0px";
     }
-
+    
     showFailure(message, boxIndex = 0) {
         if (boxIndex >= this.boxs.length) {
             console.log("invalid index for messageBox!");
             return;
         }
+        this.boxs[boxIndex].classList.remove("success");
         this.boxs[boxIndex].classList.add("failure");
         this.boxs[boxIndex].querySelector(".message-body").innerText = message;
         this.boxs[boxIndex].style.right = "0px";
