@@ -131,7 +131,7 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
         return;
     }
 
-    fetch("/api/add-user", {
+    fetch("/api/signup", {
         method: 'POST',
         body: formData,
     })

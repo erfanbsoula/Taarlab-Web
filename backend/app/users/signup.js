@@ -1,8 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const express = require('express');
 const client = require('../database.js').client;
-const router = express.Router();
 
 const multer = require("multer");
 var storage = multer.diskStorage({
@@ -103,8 +101,8 @@ function loadBodyParams(req, res) {
 		return rejectHelper(res, "password");
 
 	return {
-		firstname: firstname,
-		lastname: lastname,
+		firstname: firstname.toLowerCase(),
+		lastname: lastname.toLowerCase(),
 		nationalID: nationalID,
 		birthDate: birthDate,
 		username: username,
@@ -116,7 +114,7 @@ function addUserHandler(req, res) {
 	let params = loadBodyParams(req, res);
 	if (!params) return;
 
-	let filepath = path.join(__dirname, '..', req.file.path);
+	let filepath = path.join(__dirname, '..', '..', req.file.path);
 	fs.readFile(filepath, {encoding: 'base64'}, (err, data) => {
 		if (err) {
 			console.log(err);
@@ -151,7 +149,7 @@ function addUserHandler(req, res) {
 	})
 }
 
-router.post("/api/add-user", (req, res) => {
+function signupHandler(req, res) {
 	let profilUpload = upload.single("profilePic");
 	profilUpload(req, res, (err) => {
 		if (err instanceof multer.MulterError || !req.file) {
@@ -176,6 +174,6 @@ router.post("/api/add-user", (req, res) => {
 			addUserHandler(req, res);
 		}
 	});
-});
+}
 
-module.exports.router = router;
+module.exports.handler = signupHandler;

@@ -63,21 +63,35 @@ passport.use(new LocalStrategy(
 		passwordField: 'password'
 	},
 	(username, password, done) => {
-		client.db("test").collection("users").findOne({ username: username }, (err, user) => {
-			if (err) { return done(err); }
-			if (!user) { return done(null, false); }
-			if (user.password != password) { return done(null, false); }
-			return done(null, user);
+		client.db("test").collection("users").findOne({ username: username }, (err1, user1) => {
+			if (err1) { return done(err1); }
+			if (!user1) { 
+				client.db("test").collection("admins").findOne({ username: username }, (err2, user2) => { 
+					if (err2) { return done(err2); }
+					if (!user2) { return done(null, false); }
+					if (user2.password != password) { return done(null, false); }
+					return done(null, user2);
+				})
+				return;
+			}
+			if (user1.password != password) { return done(null, false); }
+			return done(null, user1);
 		});
 	}
-	))
+))
 	
 passport.serializeUser(function(user, done) { done(null, user._id); });
 
 passport.deserializeUser(function(id, done) {
-	client.db("test").collection("users").findOne({ _id: ObjectId(id) },
-	(err, user) => { done(err, user); }
-	);
+	client.db("test").collection("users").findOne({ _id: ObjectId(id) }, (err, user) => {
+		if (!user) {
+			client.db("test").collection("admins").findOne({ _id: ObjectId(id) }, (err, user) => {
+				done(err, user);
+			})
+			return;
+		}
+		done(err, user);
+	});
 });
 
 app.use(passport.initialize());

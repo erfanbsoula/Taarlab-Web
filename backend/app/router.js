@@ -11,8 +11,8 @@ router.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'pri
 router.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'private', 'home', 'home.html'));
 })
-router.use(require("./users/users.js").router);
-router.use(require("./users/get-user.js").router);
+router.use(require("./users/router.js").router);
+// router.use(require("./users/get-user.js").router);
 
 // **********************************************************************
 // API for posting data to the DataBase

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>HWM</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+   <link rel="stylesheet" href="/userView/userView.css">
+</head>
+
+<body>
+<header class="width-full row-flex">
+   <div class="space-left" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+   </div>
+   <div>
+      <h2 id="header-title">TAARLAB</h2>
+   </div>
+   <div class="width-full"></div>
+   <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+   <img src="/assets/icons/ai.png" alt="icon" class="header-img">
+</header>
+<div class="width-full row-flex">
+   <div id="sidebar">
+      <div id="sidebar-content-container">
+         <nav id="navbar">
+				<div onclick="window.location.href = '/home/home.html';" class="nav-item">
+					<div class="pointer"></div>
+					<div class="space-left">Home</div>
+				</div>
+            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Search Logs</div>
+            </div>
+				<div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+					<div class="pointer"></div>
+					<div class="space-left">Add New User</div>
+				</div>
+         </nav>
+      </div>
+   </div>
+   <div class="width-full" id="content-container">
+      <main class="width-full">
+         <br>
+         <div class="row-flex space-top center">
+            <div class="align-self-2start margin-sides column-flex center" style="width: 900px;">
+               <div class="card styled-table">
+                  <table>
+                     <thead>
+                        <tr>
+                           <th>Profile</th>
+                           <th>First name</th>
+                           <th>Last name</th>
+                           <th>Date of birth</th>
+                           <th>National ID</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+</body>
+<!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
+<script src="/components/sidebar/sidebar-menu.js"></script>
+<script src="/components/message/message.js"></script>
+<script src="/userView/userView.js"></script>
+</html>

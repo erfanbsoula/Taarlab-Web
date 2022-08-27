@@ -1,0 +1,49 @@
+@use '../configs.scss' as CONFIG;
+
+.styled-table {
+    padding: 0px !important;
+    width: 100%;
+    overflow: hidden;
+    border: 0;
+
+    table {
+        margin: 0px;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9em;
+
+        thead {
+            tr {
+                background-color: CONFIG.$CERULEAN;
+                color: CONFIG.$FOREGROUND_WHITE;
+
+                th {
+                    // position: sticky;
+                    background-color: CONFIG.$CERULEAN;
+                    top: 0;
+                } 
+            }           
+        }
+
+        tbody {
+            tr {
+                background-color: CONFIG.$FOREGROUND_WHITE;
+                // border-bottom: 1px solid CONFIG.$SOLID_BORDER;
+            }
+
+            tr:nth-of-type(even) {
+                background-color: #EEEEEE;
+            }
+
+            .active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+    }
+}

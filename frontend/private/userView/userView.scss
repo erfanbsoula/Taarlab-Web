@@ -1,14 +1,30 @@
 @use '../components/configs.scss' as CONFIG;
+@use '../components/message/message.scss';
 @use '../components/tables/table.scss';
 @use '../components/index.scss';
+
+table {
+    table-layout: fixed;
+
+    th, td {
+        width: 20%;
+        overflow: hidden;
+    }
+
+    th:nth-of-type(1), tr td:nth-of-type(1) {
+        width: 19%;
+    }
+}
 
 .profile {
     $circle_radius: 25px;
 
     display: flex;
+    width: 100%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-left: 20px;
 
     img {
         width: $circle_radius;
@@ -16,7 +32,9 @@
         border-radius: 50%;
     }
 
-    div {
+    a {
         margin-left: 10px;
+        color: royalblue;
+        text-decoration: none;
     }
 }
