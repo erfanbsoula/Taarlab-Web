@@ -460,8 +460,13 @@ table {
   table-layout: fixed;
 }
 table th, table td {
-  width: 20%;
   overflow: hidden;
+}
+table th:nth-of-type(4), table tr td:nth-of-type(4) {
+  width: 15%;
+}
+table th:nth-of-type(5), table tr td:nth-of-type(5) {
+  width: 15%;
 }
 table th:nth-of-type(1), table tr td:nth-of-type(1) {
   width: 19%;

@@ -4,7 +4,7 @@ fetch("/api/users", { method: 'GET' })
 .then((res) => res.json())
 .then((json) => {
     let tbody = document.querySelector("tbody");
-    for (let i = 0; i < json.length; i++) {
+    for (let i = json.length-1; 0 <= i; i--) {
         let row = document.createElement('tr');
         let content = "<td><div class='profile'>";
         content += "<img src='/api/profilePic?username=" + json[i].username + "' alt='pic'>";

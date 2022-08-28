@@ -71,7 +71,7 @@ function getFormData() {
     }
 
     let nationalID = document.getElementById("nationalID").value;
-    if (hasLengthError(nationalID, "National ID", 16)) return false;
+    if (hasLengthError(nationalID, "National ID", 10)) return false;
     if (!/^[0-9]+$/g.test(nationalID)) {
         error("National ID can only contain numbers!");
         return false;
@@ -90,7 +90,7 @@ function getFormData() {
     let file = document.getElementById("profilePic").files[0];
 
     let username = document.getElementById("username").value;
-    if (hasLengthError(username, "Username")) return false;
+    if (hasLengthError(username, "Username", 10)) return false;
     if (/^[0-9]/g.test(username)) {
         error("Username can't start with a number!");
         return false;

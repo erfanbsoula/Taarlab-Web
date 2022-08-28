@@ -35,7 +35,7 @@ function hasLengthError(str, max=32, min=3) {
 
 function isUsernameInvalid(username) {
 	return (
-		hasLengthError(username) ||
+		hasLengthError(username, 10) ||
 		/^[0-9]/g.test(username) ||
 		!/^[a-zA-Z0-9_]+$/g.test(username)
 	);
@@ -82,12 +82,12 @@ function loadBodyParams(req, res) {
 
 	let nationalID = req.body.nationalID;
 	if (!nationalID) return loadRejectHelper(res, "nationalID");
-	if (hasLengthError(nationalID) || !/^[0-9]+$/g.test(nationalID))
+	if (hasLengthError(nationalID, 10) || !/^[0-9]+$/g.test(nationalID))
 		return rejectHelper(res, "nationalID");
 	
 	let birthDate = req.body.birthDate;
 	if (!birthDate) return loadRejectHelper(res, "birthDate");
-	if (hasLengthError(birthDate, 10, 10) || !isValidDate(birthDate))
+	if (birthDate.length != 10 || !isValidDate(birthDate))
 		return rejectHelper(res, "birthDate");
 
 	let username = req.body.username;
