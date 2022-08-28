@@ -1,4 +1,103 @@
 /**
+ *  <div class="message success">
+ *      <div class="message-edge"></div>
+ *      <div class="message-body">test message</div>
+ *      <div class="close">
+ *          <div>close</div>
+ *      </div>
+ *  </div>
+**/
+.message {
+  border-radius: 7px 0px 0px 7px;
+  background-color: #F1F1F1;
+  height: 60px;
+  width: 400px;
+  position: fixed;
+  right: -401px;
+  bottom: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 150ms ease-in-out;
+  margin-left: auto;
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
+}
+.message .message-edge {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 10px;
+}
+.message .message-body {
+  margin: 0 20px;
+}
+.message .message-close {
+  align-self: stretch;
+  margin: 5px 0;
+  padding: 0 15px;
+  border-left: solid 1px #D5D5D5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #858585;
+  cursor: pointer;
+}
+
+.success {
+  color: rgb(0, 150, 0);
+}
+.success .message-edge {
+  background-color: rgb(0, 150, 0);
+}
+
+.failure {
+  color: rgb(200, 50, 0);
+}
+.failure .message-edge {
+  background-color: rgb(200, 50, 0);
+}
+
+.styled-table {
+  padding: 0px !important;
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+}
+.styled-table table {
+  margin: 0px;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.9em;
+}
+.styled-table table thead tr {
+  background-color: #4a8fdd;
+  color: #F7F7F7;
+}
+.styled-table table thead tr th {
+  background-color: #4a8fdd;
+  top: 0;
+}
+.styled-table table tbody tr {
+  background-color: #F7F7F7;
+}
+.styled-table table tbody tr:nth-of-type(even) {
+  background-color: #F1F1F1;
+}
+.styled-table table tbody .active-row {
+  font-weight: bold;
+  color: #009879;
+}
+.styled-table table th, .styled-table table td {
+  padding: 12px 15px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/**
  *  <div class="space-left" id="menu-btn">
  *      <span></span>
  *      <span></span>
@@ -359,161 +458,31 @@ main {
   margin: auto;
 }
 
-/**
- *  <div class="message success">
- *      <div class="message-edge"></div>
- *      <div class="message-body">test message</div>
- *      <div class="close">
- *          <div>close</div>
- *      </div>
- *  </div>
-**/
-.message {
-  border-radius: 7px 0px 0px 7px;
-  background-color: #F1F1F1;
-  height: 60px;
-  width: 400px;
-  position: fixed;
-  right: -401px;
-  bottom: 10px;
-  overflow: hidden;
+table th:nth-of-type(1), table tr td:nth-of-type(1) {
+  width: 19%;
+}
+table th:nth-of-type(4), table tr td:nth-of-type(4),
+table th:nth-of-type(5), table tr td:nth-of-type(5) {
+  width: 15%;
+}
+
+.profile {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 150ms ease-in-out;
-  margin-left: auto;
-  border: inset solid rgba(0, 0, 0, 0.2) 1px;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
-}
-.message .message-edge {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 10px;
-}
-.message .message-body {
-  margin: 0 20px;
-}
-.message .message-close {
-  align-self: stretch;
-  margin: 5px 0;
-  padding: 0 15px;
-  border-left: solid 1px #D5D5D5;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #858585;
-  cursor: pointer;
-}
-
-.success {
-  color: rgb(0, 150, 0);
-}
-.success .message-edge {
-  background-color: rgb(0, 150, 0);
-}
-
-.failure {
-  color: rgb(200, 50, 0);
-}
-.failure .message-edge {
-  background-color: rgb(200, 50, 0);
-}
-
-#form-container {
   width: 100%;
-  max-width: 100%;
-  min-width: 400px;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  padding-left: 20px;
 }
-
-#add-user-card {
-  width: 700px;
-  margin-top: 50px;
-  border-radius: 15px;
-  border: inset solid rgba(0, 0, 0, 0.2) 1px;
-  box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.15);
-  background-color: #F7F7F7;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-#add-user-card #card-header {
-  background-color: #4a8fdd;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-  height: 60px;
-}
-#add-user-card #card-header div {
-  font-size: 20px;
-  color: #F7F7F7;
-  text-align: center;
-  font-weight: bold;
-}
-#add-user-card #card-body {
-  width: 80%;
-  margin: 20px auto;
-}
-#add-user-card form {
-  color: #858585;
-}
-#add-user-card form input[type=text] {
-  color: #1F2535;
-  height: 35px;
-  width: 100%;
-  border: 2px solid #858585;
-  box-sizing: border-box;
-  border-radius: 10px;
-  text-align: left;
-  padding: 0 10px;
-  background-color: inherit;
-}
-#add-user-card form input[type=text]:focus {
-  outline: none;
-}
-#add-user-card form label {
-  font-size: 14px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-}
-#add-user-card form #formError {
-  align-self: center;
-  margin-left: 25px;
-  font-size: 15px;
-  color: rgb(200, 50, 0);
-}
-#add-user-card .width-30 {
-  width: 30%;
-}
-#add-user-card .width-40 {
-  width: 40%;
-}
-#add-user-card .width-50 {
-  width: 50%;
-}
-#add-user-card .width-60 {
-  width: 60%;
-}
-#add-user-card .width-70 {
-  width: 70%;
-}
-
-#img-upload-canvas img {
-  width: 80px;
-  height: 80px;
+.profile img {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 }
-
-#date-canvas {
-  align-self: flex-end;
+.profile a {
+  margin-left: 10px;
+  color: royalblue;
+  text-decoration: none;
 }
 
-/*# sourceMappingURL=userAdd.css.map */
+/*# sourceMappingURL=userList.css.map */

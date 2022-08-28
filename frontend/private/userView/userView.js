@@ -1,24 +1,28 @@
 let messageBox = new MessageBox();
 
-fetch("/api/users", { method: 'GET' })
-.then((res) => res.json())
-.then((json) => {
-    let tbody = document.querySelector("tbody");
-    for (let i = json.length-1; 0 <= i; i--) {
-        let row = document.createElement('tr');
-        let content = "<td><div class='profile'>";
-        content += "<img src='/api/profilePic?username=" + json[i].username + "' alt='pic'>";
-        content += "<a href=''>@" + json[i].username + "</a>";
-        content += "</div></td>";
-        content += "<td>" + json[i].firstname.charAt(0).toUpperCase() + json[i].firstname.slice(1) + "</td>";
-        content += "<td>" + json[i].lastname.charAt(0).toUpperCase() + json[i].lastname.slice(1) + "</td>";
-        content += "<td>" + json[i].birthDate + "</td>";
-        content += "<td>" + json[i].nationalID + "</td>";
-        row.innerHTML = content;
-        tbody.appendChild(row);
-    }
+const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop)
 })
-.catch((err) => {
-    console.log(err);
-    messageBox.showFailure("unable to load the table!");
-});
+
+if (params.username) {
+    fetch("/api/user?username=" + params.username, { method: 'GET' })
+    .then((res) => res.json())
+    .then((json) => {
+        document.querySelector(".user-data .username").innerText += params.username;
+        let tbody = document.querySelector(".user-data tbody");
+        content = "<tr><td>First Name:</td>";
+        content +=  "<td>" + json.firstname.charAt(0).toUpperCase() + json.firstname.slice(1) + "</td>";
+        content += "</tr><tr><td>Last Name:</td>";
+        content += "<td>" + json.lastname.charAt(0).toUpperCase() + json.lastname.slice(1) + "</td>";
+        content += "</tr><tr><td>Date of Birth:</td>";
+        content += "<td>" + json.birthDate + "</td>";
+        content += "</tr><tr><td>National ID:</td>";
+        content += "<td>" + json.nationalID + "</td></tr>";
+        tbody.innerHTML = content;
+        document.querySelector(".profile-img").src = "/api/profilePic?username=" + params.username;
+    })
+    .catch((err) => {
+        console.log(err);
+        messageBox.showFailure("unable to load user data!");
+    });
+}

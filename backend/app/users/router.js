@@ -23,7 +23,40 @@ router.get('/api/users', (req, res) => {
     });
 });
 
-router.use('/api/profilePic', (req, res) => {
+const db_user_options = 
+
+router.get('/api/user', (req, res) => {
+    if (!req.query.username) {
+        res.status(400).send("Bad Request!");
+        return;
+    }
+    client.db("test").collection("users")
+    .findOne({ username: req.query.username },
+        {
+            projection: {
+                _id: 0,
+                firstname: 1,
+                lastname: 1,
+                nationalID: 1,
+                birthDate: 1,
+            }
+        },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send("error!");
+                return;
+            }
+            if (!result) {
+                res.status(404).send("error!");
+                return;
+            }
+            res.send(JSON.stringify(result));
+        }
+    );
+});
+
+router.get('/api/profilePic', (req, res) => {
     if (!req.query.username) {
         res.status(400).send("Bad Request!");
         return;

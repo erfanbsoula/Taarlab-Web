@@ -49,7 +49,7 @@ br { margin: 5px 0; }
 
 .card {
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 11px;
     @include CONFIG.shadow_border(6px, 2px);
     border: 0px;
     background-color: CONFIG.$FOREGROUND_WHITE;

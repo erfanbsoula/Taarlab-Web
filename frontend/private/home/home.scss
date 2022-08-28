@@ -2,6 +2,10 @@
 @use '../components/tables/table.scss';
 @use '../components/index.scss';
 
+.styled-table {
+    @include CONFIG.shadow_border(5px, 2px);
+}
+
 .profile {
     $circle_radius: 25px;
 

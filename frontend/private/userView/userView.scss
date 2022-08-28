@@ -3,43 +3,60 @@
 @use '../components/tables/table.scss';
 @use '../components/index.scss';
 
-table {
-    table-layout: fixed;
-
-    th, td {
-        // width: 20%;
-        overflow: hidden;
-    }
-
-    th:nth-of-type(1), tr td:nth-of-type(1) {
-        width: 19%;
-    }
-
-    th:nth-of-type(4), tr td:nth-of-type(4),
-    th:nth-of-type(5), tr td:nth-of-type(5) {
-        width: 15%;
-    }
-}
-
-.profile {
-    $circle_radius: 25px;
-
+.user-data {
+    color: CONFIG.$GRAY;
+    padding: 30px 20px;
     display: flex;
-    width: 100%;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 20px;
 
-    img {
-        width: $circle_radius;
-        height: $circle_radius;
-        border-radius: 50%;
-    }
-
-    a {
-        margin-left: 10px;
+    .username {
+        margin-top: 20px;
+        cursor: default;
         color: royalblue;
         text-decoration: none;
     }
+
+    table {
+        margin: 0px;
+        width: 60%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 0.9em;
+
+        tbody {
+            tr {
+                background-color: CONFIG.$FOREGROUND_WHITE;
+                border-bottom: 1px solid CONFIG.$SOLID_BORDER;
+
+                td:nth-of-type(1) {
+                    width: 30%;
+                }
+            }
+
+            tr:last-of-type {
+                border-bottom: 0;
+            }
+
+            .active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+        }
+
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            overflow: hidden;
+        }
+    }
+}
+
+.profile-img {
+    $circle_radius: 120px;
+
+    width: $circle_radius;
+    height: $circle_radius;
+    border-radius: 50%;
 }
