@@ -35,7 +35,7 @@
 					<div class="pointer"></div>
 					<div class="space-left">Search Logs</div>
 				</div>
-				<div onclick="window.location.href = '/userView/userView.html';" class="nav-item">
+				<div onclick="window.location.href = '/userList/userList.html';" class="nav-item">
 					<div class="pointer"></div>
 					<div class="space-left">View Users</div>
 				</div>
@@ -51,55 +51,65 @@
 					</div>
 					<div id="card-body">
 						<form id="userForm" method="post" action="/api/add-user" enctype="multipart/form-data">
-							<div class="row-flex width-full center">
-								<div class="space-right width-40">
-									<label for="firstname">first name:</label>
-									<input id="firstname" name="firstname" type="text" maxlength="32" required>
+							<div class="form-body">
+								<div class="column-flex center margin-sides" id="img-upload-canvas">
+									<br>
+									<div id="prevContainer">
+										<img src="/assets/profile/taylor.webp" alt="icon" id="profilePrev">
+										<div id="hoverImg">
+											<img src="/assets/icons/upload.png" alt="upload">
+											<span>Select</span>
+										</div>
+									</div>
+									<label for="profilePrev">Select a Profile Picture</label>
+									<input type="file" id="profilePic" name="profilePic" accept="image/*" style="width: 0.1px; height: 0.1px; opacity: 0;">
+									<!-- <div class="button-magic space-left" id="uploadBtn">
+										select
+										<span></span>
+										<span></span>
+										<span></span>
+										<span></span>
+									</div> -->
 								</div>
-								<div class="space-left width-60">
-									<label for="lastname">last name:</label>
-									<input id="lastname" name="lastname" type="text" maxlength="32" required>
+								<div class="fields">
+									<div class="row-flex width-full center">
+										<div class="space-right width-50">
+											<label for="firstname">first name:</label>
+											<input id="firstname" name="firstname" type="text" maxlength="32" required>
+										</div>
+										<div class="space-left width-50">
+											<label for="lastname">last name:</label>
+											<input id="lastname" name="lastname" type="text" maxlength="32" required>
+										</div>
+									</div>
+									<br>
+									<div class="row-flex width-full">
+										<div class="space-right width-full">
+											<label for="nationalID">national ID:</label>
+											<input id="nationalID" name="nationalID" type="text" maxlength="10" required>
+										</div>
+										<div class="space-left width-full" id="date-canvas">
+											<label for="dateInput">date of birth:</label>
+											<input type="date"  id="dateInput" name="dateInput">
+										</div>
+									</div>
+									<br>
+									<div class="row-flex width-full">
+										<div class="width-full space-right">
+											<label for="username">username:</label>
+											<input id="username" name="username" type="text" maxlength="10" required>
+										</div>
+										<div class="width-full space-left">
+											<label for="password">password:</label>
+											<input id="password" name="password" type="text" maxlength="32" required>
+										</div>
+									</div>
 								</div>
 							</div>
 							<br>
 							<div class="row-flex width-full">
-								<div class="space-right width-50">
-									<label for="nationalID">national ID:</label>
-									<input id="nationalID" name="nationalID" type="text" maxlength="10" required>
-								</div>
-								<div class="space-left width-30" id="date-canvas">
-									<label for="dateInput">date of birth:</label>
-									<input type="date"  id="dateInput" name="dateInput">
-								</div>
-							</div>
-							<br>
-							<div class="row-flex width-full center" id="img-upload-canvas">
-								<img src="/assets/profile/taylor.webp" alt="icon" class="space-right" id="profilePrev">
-								<p>Upload Profile Picture:</p>
-								<input type="file" id="profilePic" name="profilePic" accept="image/*" style="width: 0.1px; height: 0.1px; opacity: 0;">
-								<div class="button-magic space-left" id="uploadBtn">
-									select
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-								</div>
-							</div>
-							<br>
-							<div class="row-flex width-full">
-								<div class="width-full space-right">
-									<label for="username">username:</label>
-									<input id="username" name="username" type="text" maxlength="10" required>
-								</div>
-								<div class="width-full space-left">
-									<label for="password">password:</label>
-									<input id="password" name="password" type="text" maxlength="32" required>
-								</div>
-							</div>
-							<br>
-							<div class="row-flex width-full">
-								<input type="submit" class="button-gradient" value="Signup">
-								<div id="formError"></div>
+								<div id="formError" class="width-full"></div>
+								<input type="submit" class="button-gradient" value="Signup" style="margin-right: 0;">
 							</div>
 						</form>
 					</div>

@@ -3,6 +3,8 @@
   width: 100%;
   overflow: hidden;
   border: 0;
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
 }
 .styled-table table {
   margin: 0px;
@@ -394,11 +396,6 @@ header #header-title:hover {
 main {
   max-width: 1720px;
   margin: auto;
-}
-
-.styled-table {
-  border: inset solid rgba(0, 0, 0, 0.2) 1px;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
 }
 
 .profile {

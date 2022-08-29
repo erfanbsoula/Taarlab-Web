@@ -6,14 +6,14 @@ const fp = flatpickr("#dateInput", {
     position: 'below left',
     minDate: "1960/01/01",
     maxDate: "2020/12/30",
-    onOpen: function(selectedDates, dateStr, instance) {
-        document.querySelector("#date-canvas label").style.display = "none";
-        document.getElementById("date-canvas").style.alignSelf = "flex-start";
-    },
-    onClose: function(selectedDates, dateStr, instance) {
-        document.querySelector("#date-canvas label").style.display = "inline";
-        document.getElementById("date-canvas").style.alignSelf = "flex-end";
-    }
+    // onOpen: function(selectedDates, dateStr, instance) {
+    //     document.querySelector("#date-canvas label").style.display = "none";
+    //     document.getElementById("date-canvas").style.alignSelf = "flex-start";
+    // },
+    // onClose: function(selectedDates, dateStr, instance) {
+    //     document.querySelector("#date-canvas label").style.display = "inline";
+    //     document.getElementById("date-canvas").style.alignSelf = "flex-end";
+    // }
 });
 
 // document.getElementById("profilePic").value = "";
@@ -22,7 +22,7 @@ if (document.getElementById("profilePic").files[0]) {
     document.getElementById("profilePrev").src = url;
 }
 
-document.getElementById("uploadBtn").addEventListener('click', (event) => {
+document.getElementById("hoverImg").addEventListener('click', (event) => {
     document.getElementById("profilePic").click();
 })
 

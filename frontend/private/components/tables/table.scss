@@ -5,6 +5,7 @@
     width: 100%;
     overflow: hidden;
     border: 0;
+    @include CONFIG.shadow_border(5px, 2px);
 
     table {
         margin: 0px;
