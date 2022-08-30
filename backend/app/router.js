@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'private', 'home', 'home.html'));
 })
 router.use(require("./users/router.js").router);
-router.use(require("./event/router.js").router);
+router.use(require("./report/router.js").router);
 
 // **********************************************************************
 // API for posting data to the DataBase
