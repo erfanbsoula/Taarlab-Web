@@ -1,6 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const client = require('../database.js').client;
+const { DateTime } = require("luxon");
+
+const TIME_ZONE = 'Asia/Tehran';
 
 const multer = require("multer");
 var storage = multer.diskStorage({
@@ -125,8 +128,7 @@ function addUserHandler(req, res) {
 			res.send(JSON.stringify(response));
 			return;
 		}
-		let date = new Date();
-		let today = date.toISOString().slice(0, 10);
+		let today = DateTime.now().setZone(TIME_ZONE).toFormat('yyyy-MM-dd');
 		client.db("test").collection("users").insertOne({
 			firstname: params.firstname,
 			lastname: params.lastname,

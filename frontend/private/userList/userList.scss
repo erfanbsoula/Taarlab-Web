@@ -27,6 +27,19 @@
     }
     th:nth-of-type(7), tr td:nth-of-type(7) {
         width: 165px;
+        padding-right: 30px;
+
+        #dateSort {
+            width: 12px;
+            height:12px;
+            margin-right: 5px;
+            filter: invert(0.95);
+            cursor: pointer;
+        }
+
+        div div {
+            margin-right: 15px;
+        }
     }
 
     img {

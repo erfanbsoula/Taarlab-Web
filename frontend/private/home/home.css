@@ -532,6 +532,16 @@ main {
 .styled-table table th:nth-of-type(3), .styled-table table tr td:nth-of-type(3) {
   width: 120px;
 }
+.styled-table table th:nth-of-type(3) #dateSort, .styled-table table tr td:nth-of-type(3) #dateSort {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  filter: invert(0.95);
+  cursor: pointer;
+}
+.styled-table table th:nth-of-type(3) div div, .styled-table table tr td:nth-of-type(3) div div {
+  margin-right: 20px;
+}
 .styled-table table th:nth-of-type(4), .styled-table table tr td:nth-of-type(4) {
   width: 103px;
 }

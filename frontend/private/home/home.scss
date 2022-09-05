@@ -14,6 +14,18 @@
     }
     th:nth-of-type(3), tr td:nth-of-type(3) {
         width: 120px;
+
+        #dateSort {
+            width: 12px;
+            height:12px;
+            margin-right: 5px;
+            filter: invert(0.95);
+            cursor: pointer;
+        }
+
+        div div {
+            margin-right: 20px;
+        }
     }
     th:nth-of-type(4), tr td:nth-of-type(4) {
         width: 103px;

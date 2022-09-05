@@ -576,8 +576,20 @@ main {
 }
 .styled-table table th:nth-of-type(1), .styled-table table tr td:nth-of-type(1) {
   width: 130px;
-  padding-left: 30px;
+  padding-left: 25px;
   padding-right: 15px;
+}
+.styled-table table th:nth-of-type(1) #dateSort, .styled-table table tr td:nth-of-type(1) #dateSort {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  filter: invert(0.95);
+  border-radius: 0;
+  opacity: 1;
+  cursor: pointer;
+}
+.styled-table table th:nth-of-type(1) div div, .styled-table table tr td:nth-of-type(1) div div {
+  margin-right: 15px;
 }
 .styled-table table th:nth-of-type(2), .styled-table table tr td:nth-of-type(2) {
   width: 90px;

@@ -545,6 +545,17 @@ main {
 }
 .styled-table table th:nth-of-type(7), .styled-table table tr td:nth-of-type(7) {
   width: 165px;
+  padding-right: 30px;
+}
+.styled-table table th:nth-of-type(7) #dateSort, .styled-table table tr td:nth-of-type(7) #dateSort {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  filter: invert(0.95);
+  cursor: pointer;
+}
+.styled-table table th:nth-of-type(7) div div, .styled-table table tr td:nth-of-type(7) div div {
+  margin-right: 15px;
 }
 .styled-table table img {
   width: 25px;

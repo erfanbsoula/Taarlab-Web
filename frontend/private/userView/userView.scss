@@ -69,8 +69,22 @@
     }
     th:nth-of-type(1), tr td:nth-of-type(1) {
         width: 130px;
-        padding-left: 30px;
+        padding-left: 25px;
         padding-right: 15px;
+
+        #dateSort {
+            width: 12px;
+            height:12px;
+            margin-right: 5px;
+            filter: invert(0.95);
+            border-radius: 0;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        div div {
+            margin-right: 15px;
+        }
     }
     th:nth-of-type(2), tr td:nth-of-type(2) {
         width: 90px;
