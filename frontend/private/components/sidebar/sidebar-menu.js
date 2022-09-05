@@ -11,8 +11,8 @@ document.getElementById("menu-btn").addEventListener("click", (ev) => {
     } else {
         document.getElementById("sidebar-content-container").style.transitionDelay = "500ms";
         document.getElementById("sidebar-content-container").style.visibility = "visible";
-        document.getElementById("content-container").style.marginLeft = "230px";
-        document.getElementById("sidebar").style.width = "230px";
+        document.getElementById("content-container").style.marginLeft = "210px";
+        document.getElementById("sidebar").style.width = "210px";
         menuOpen = true;
     }
 })
@@ -25,3 +25,16 @@ document.querySelectorAll("nav .nav-item").forEach((element, key, parent) => {
         event.target.children[0].style.visibility = "hidden";
     });
 });
+
+document.querySelector(".exit").addEventListener('click', (event) => {
+    fetch('/logout', { method: 'DELETE', redirect: 'follow'})
+    .then(res => res.json())
+    .then(json => {
+        if (json.status == "ok"){
+            window.location.href = "/login";
+        }
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+})

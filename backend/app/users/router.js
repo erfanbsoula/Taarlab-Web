@@ -12,6 +12,7 @@ router.get('/api/users', (req, res) => {
         nationalID: 1,
         birthDate: 1,
         username: 1,
+        signupDate: 1,
     })
     .toArray((err, collection) => {
         if (err) {
@@ -39,6 +40,7 @@ router.get('/api/user', (req, res) => {
                 lastname: 1,
                 nationalID: 1,
                 birthDate: 1,
+                signupDate: 1,
             }
         },
         (err, result) => {

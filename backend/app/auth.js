@@ -11,8 +11,8 @@ function isAuthenticated(req) {
 }
 
 router.get('/login-failure', (req, res) => {
-	res.send('login failed!')
-})
+	res.send('login failed!');
+});
 
 function canLogin(req, res, next) {
     if (isAuthenticated(req))
@@ -36,6 +36,20 @@ router.use((req, res, next) => {
     if (!isAuthenticated(req))
         res.redirect('/login');
     else next();
-})
+});
+
+router.delete('/logout', (req, res) => {
+    req.logOut((err) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        let result = {
+            status: "ok",
+            message: "logged out!"
+        };
+        res.send(JSON.stringify(result));
+    });
+});
 
 module.exports.router = router;

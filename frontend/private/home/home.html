@@ -8,17 +8,16 @@
 </head>
 
 <body>
-<header class="width-full row-flex">
-   <div class="space-left" id="menu-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+<header class="width-full">
+   <div class="row-flex center">
+      <div class="space-left" id="menu-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+      <div id="header-title">TAVANRESAN - TAARLAB</div>
    </div>
-   <div>
-      <h2 id="header-title">TAARLAB</h2>
-   </div>
-   <div class="width-full"></div>
    <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
    <img src="/assets/icons/ai.png" alt="icon" class="header-img">
 </header>
@@ -28,90 +27,37 @@
          <nav id="navbar">
             <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
                <div class="pointer"></div>
-               <div class="space-left">Search Logs</div>
-            </div>
-            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
-               <div class="pointer"></div>
                <div class="space-left">Add New User</div>
             </div>
-            <div onclick="window.location.href = '/userList/userList.html';" class="nav-item">
+            <div onclick="window.location.href = '/userView/userView.html';" class="nav-item">
                <div class="pointer"></div>
                <div class="space-left">View Users</div>
             </div>
          </nav>
+         <div class="exit">
+            <img src="/assets/icons/logout.png" alt="">
+            <div class="space-left">logout</div>
+         </div>
       </div>
    </div>
    <div class="width-full" id="content-container">
       <main class="width-full">
          <br>
          <div class="row-flex space-top center">
-            <div class="align-self-2start margin-sides column-flex center" style="width: 800px;">
+            <div class="align-self-2start margin-sides column-flex center" style="width: 750px;">
                <div class="styled-table">
                   <table>
                      <thead>
                         <tr>
+                           <th></th>
                            <th>Profile</th>
-                           <th>Date and Time</th>
+                           <th>Date</th>
+                           <th>Time</th>
                            <th>Progress</th>
+                           <th>Temperature</th>
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/moradi.dib" alt="profile">
-                              <div>Dr. Moradi</div>
-                           </td>
-                           <td>2022/7/19 15:20</td>
-                           <td>90%</td>
-                        </tr>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/navabi.jpg" alt="profile">
-                              <div>Dr. Navabi</div>
-                           </td>
-                           <td>2022/7/18 16:31</td>
-                           <td>100%</td>
-                        </tr>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/tale.jpg" alt="profile">
-                              <div>Dr. Tale</div>
-                           </td>
-                           <td>2022/7/17 07:53</td>
-                           <td>70%</td>
-                        </tr>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/safari.jpg" alt="profile">
-                              <div>Dr. Safari</div>
-                           </td>
-                           <td>2022/7/18 13:47</td>
-                           <td>80%</td>
-                        </tr>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/akhaie.jpg" alt="profile">
-                              <div>Dr. Akhaie</div>
-                           </td>
-                           <td>2022/7/17 14:09</td>
-                           <td>90%</td>
-                        </tr>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/moradi.dib" alt="profile">
-                              <div>Dr. Moradi</div>
-                           </td>
-                           <td>2022/7/17 9:35</td>
-                           <td>100%</td>
-                        </tr>
-                        <tr>
-                           <td class="profile">
-                              <img src="/assets/profile/tale.jpg" alt="profile">
-                              <div>Dr. Tale</div>
-                           </td>
-                           <td>2022/7/16 17:18</td>
-                           <td>100%</td>
-                        </tr>
                      </tbody>
                   </table>
                </div>
@@ -122,8 +68,11 @@
                   <canvas id="myChart"></canvas>
                </div>
                <br><br>
-               <div class="width-full card center-text">
-                  <span>total entries: 7</span>
+               <div class="width-full card summary">
+                  <table>
+                     <tbody>
+                     </tbody>
+                  </table>
                </div>
             </div>
          </div>
@@ -134,5 +83,6 @@
 <!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
 <script src="/components/sidebar/sidebar-menu.js"></script>
 <script src="/components/chart/chart.min.js"></script>
+<script src="/components/message/message.js"></script>
 <script src="/home/home.js"></script>
 </html>

@@ -125,7 +125,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.3);
         text-align: center;
         color: #E8E9EB;
         box-sizing: border-box;
@@ -133,14 +133,14 @@
         cursor: pointer;
 
         img {
-            filter: invert(96%);
+            filter: invert(100%);
             width: 50px;
             height: 50px;
         }
 
         &:hover {
             opacity: 1;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
         }
 
         span {
@@ -155,9 +155,9 @@
         height: $IMAGE_WIDTH;
         border-radius: 50%;
 
-        &:hover {
-            filter: blur(4px);
-        }
+        // &:hover {
+        //     filter: blur(4px);
+        // }
     }
 
     label {

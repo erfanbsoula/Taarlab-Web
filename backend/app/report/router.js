@@ -42,11 +42,22 @@ router.post('/api/report', (req, res) => {
     let progress = req.body.progress;
     if (!progress) return loadRejectHelper(res, "progress");
 
+    let steps = req.body.steps;
+    if (!steps) return loadRejectHelper(res, "steps");
+    if (!Array.isArray(steps)) return rejectHelper(res, "steps");
+    if (steps.length !== 9) return rejectHelper(res, "steps");
+    for (let i = 0; i < 9; i++) {
+        if (typeof steps[i] != "boolean") {
+            return rejectHelper(res, "steps");
+        }
+    }
+
     let log = {
         username: username,
         date: date,
         time: time,
-        progress: progress
+        progress: progress,
+        steps: steps,
     }
 
     client.db("test").collection("users").findOne({ username: username })
@@ -92,7 +103,8 @@ router.get('/api/report', (req, res) => {
             _id: 0,
             date: 1,
             time: 1,
-            progress: 1
+            progress: 1,
+            steps: 1,
         })
         .toArray((err, collection) => {
             if (err) {

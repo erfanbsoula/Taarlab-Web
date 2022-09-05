@@ -51,6 +51,7 @@ app.use(session({
 	unset: 'destroy',
 	cookie: {
 		// secure: true,
+		sameSite: true,
 		maxAge: 1000 * 60 * 60
 	}
 }));

@@ -71,6 +71,10 @@ header {
     position: sticky;
     top: 0;
     cursor: default;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     
     // ****************************************
     .header-img {
@@ -84,6 +88,8 @@ header {
         text-align: center;
         color: CONFIG.$FOREGROUND_WHITE;
         transition: color 300ms ease-out;
+        font-size: 21px;
+        font-weight: bold;
         
         &:hover {
             color: #F9CF00;

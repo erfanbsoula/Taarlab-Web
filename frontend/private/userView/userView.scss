@@ -60,3 +60,38 @@
     height: $circle_radius;
     border-radius: 50%;
 }
+
+.styled-table table {
+    th, tr td {
+        width: 45px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    th:nth-of-type(1), tr td:nth-of-type(1) {
+        width: 130px;
+        padding-left: 30px;
+        padding-right: 15px;
+    }
+    th:nth-of-type(2), tr td:nth-of-type(2) {
+        width: 90px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    th:nth-of-type(3), tr td:nth-of-type(3) {
+        width: 110px;
+        padding-left: 15px;
+        padding-right: 25px;
+    }
+    th:last-of-type, tr td:last-of-type {
+        width: unset;
+        padding-right: 30px;
+    }
+    
+    img {
+        $image-width: 25px;
+        width: $image-width;
+        height: $image-width;
+        border-radius: 50%;
+        opacity: 0.85;
+    }
+}

@@ -125,6 +125,8 @@ function addUserHandler(req, res) {
 			res.send(JSON.stringify(response));
 			return;
 		}
+		let date = new Date();
+		let today = date.toISOString().slice(0, 10);
 		client.db("test").collection("users").insertOne({
 			firstname: params.firstname,
 			lastname: params.lastname,
@@ -132,6 +134,7 @@ function addUserHandler(req, res) {
 			birthDate: params.birthDate,
 			username: params.username,
 			password: params.password,
+			signupDate: today,
 			profilePic: {
 				data: data,
 				contentType: req.file.mimetype

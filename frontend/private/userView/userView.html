@@ -8,17 +8,16 @@
 </head>
 
 <body>
-<header class="width-full row-flex">
-   <div class="space-left" id="menu-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+<header class="width-full">
+   <div class="row-flex center">
+      <div class="space-left" id="menu-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+      <div id="header-title">TAVANRESAN - TAARLAB</div>
    </div>
-   <div>
-      <h2 id="header-title">TAARLAB</h2>
-   </div>
-   <div class="width-full"></div>
    <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
    <img src="/assets/icons/ai.png" alt="icon" class="header-img">
 </header>
@@ -26,19 +25,23 @@
    <div id="sidebar">
       <div id="sidebar-content-container">
          <nav id="navbar">
-				<div onclick="window.location.href = '/home/home.html';" class="nav-item">
-					<div class="pointer"></div>
-					<div class="space-left">Home</div>
-				</div>
+            <div onclick="window.location.href = '/home/home.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Home</div>
+            </div>
             <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
                <div class="pointer"></div>
-               <div class="space-left">Search Logs</div>
+               <div class="space-left">Add New User</div>
             </div>
-				<div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
-					<div class="pointer"></div>
-					<div class="space-left">Add New User</div>
-				</div>
+            <div onclick="window.location.href = '/userView/userView.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">View Users</div>
+            </div>
          </nav>
+         <div class="exit">
+            <img src="/assets/icons/logout.png" alt="">
+            <div class="space-left">logout</div>
+         </div>
       </div>
    </div>
    <div class="width-full" id="content-container">
@@ -48,7 +51,7 @@
             <div class="align-self-2start margin-sides column-flex center" style="width: 900px;">
                <div class="card user-data">
 						<div class="column-flex margin-sides center" style="width: 25%;">
-							<img src="/assets/profile/taylor.webp" alt="profile" class="profile-img">
+							<img src="/assets/icons/profile.png" alt="profile" class="profile-img">
 							<div class="username">@</div>
 						</div>
 						<table>
@@ -60,15 +63,22 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Date & Time</th>
+									<th>Date</th>
+                           <th>Time</th>
 									<th>Progress</th>
+                           <th>1</th>
+                           <th>2</th>
+                           <th>3</th>
+                           <th>4</th>
+                           <th>5</th>
+                           <th>6</th>
+                           <th>7</th>
+                           <th>8</th>
+                           <th>9</th>
+                           <th>Temprature</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>2020/01/01</td>
-									<td>90%</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>

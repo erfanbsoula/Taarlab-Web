@@ -35,7 +35,7 @@ document.getElementById("profilePic").addEventListener('change', (event) => {
 
 function clearForm() {
     document.getElementById("userForm").reset();
-    document.getElementById("profilePrev").src = "/assets/profile/taylor.webp";
+    document.getElementById("profilePrev").src = "/assets/icons/profile.png";
 }
 
 function error(message) {
