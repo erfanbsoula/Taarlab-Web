@@ -1,22 +1,31 @@
 const path = require('path');
 const fs = require('fs');
-const client = require(path.join(process.env.APPLICATION_PATH, 'database.js')).client;
-const { DateTime } = require("luxon");
+const { client } = require(
+	path.join(process.env.APPLICATION_PATH, 'database.js')
+);
 
+// **********************************************************************
+const { DateTime } = require("luxon");
 const TIME_ZONE = 'Asia/Tehran';
+
+// **********************************************************************
+// multer setup for file uploads
+const multer = require("multer");
 const UPLOADS_TMP = path.join(process.env.APPLICATION_PATH, 'uploads-tmp');
 
-const multer = require("multer");
 var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, UPLOADS_TMP);
+	destination: (req, file, cb) => {
+		cb(null, UPLOADS_TMP);
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now());
+		cb(null, file.fieldname + '-' + Date.now());
     }
 });
+
 const upload = multer({ storage: storage });
 
+// **********************************************************************
+// helper functions
 function loadRejectHelper(res, field) {
 	let response = {
 		status: "reject",
@@ -70,8 +79,9 @@ function isValidDate(dateString)
     return day > 0 && day <= monthLength[month - 1];
 };
 
+// **********************************************************************
+// load the body parameters needed to crete user object
 function loadBodyParams(req, res) {
-	// load the body parameters needed to crete user object
 	let firstname = req.body.firstname;
 	if (!firstname) return loadRejectHelper(res, "firstname");
 	if (hasLengthError(firstname) || !/^[a-zA-Z\s]+$/g.test(firstname))
@@ -114,6 +124,7 @@ function loadBodyParams(req, res) {
 	}
 }
 
+// **********************************************************************
 function addUserHandler(req, res) {
 	let params = loadBodyParams(req, res);
 	if (!params) return;
@@ -121,16 +132,18 @@ function addUserHandler(req, res) {
 	let filepath = path.join(UPLOADS_TMP, req.file.path);
 	fs.readFile(filepath, {encoding: 'base64'}, (err, data) => {
 		if (err) {
-			console.log(err);
-			let response = {
-				status: "reject",
-				message: "something went wrong!"
-			}
-			res.send(JSON.stringify(response));
-			return;
+			console.error("file reading error in addUserHandler function:");
+            console.log(err);
+            let result = {
+                status: "fail",
+                message: "something went wrong!"
+            };
+            res.status(500).send(JSON.stringify(result));
+            return;
 		}
 		let today = DateTime.now().setZone(TIME_ZONE).toFormat('yyyy-MM-dd');
 		client.db("test").collection("users").insertOne({
+			level: 2,
 			firstname: params.firstname,
 			lastname: params.lastname,
 			nationalID: params.nationalID,
@@ -142,7 +155,8 @@ function addUserHandler(req, res) {
 				data: data,
 				contentType: req.file.mimetype
 			}
-		}).then (() => {
+		})
+		.then (() => {
 			let response = {
 				status: "ok",
 				message: "accepted!"
@@ -155,28 +169,34 @@ function addUserHandler(req, res) {
 	})
 }
 
+// **********************************************************************
 function signupHandler(req, res) {
 	let profilUpload = upload.single("profilePic");
 	profilUpload(req, res, (err) => {
-		if (err instanceof multer.MulterError || !req.file) {
-			console.log(err);
+		if (err instanceof multer.MulterError) {
 			let response = {
 				status: "reject",
-				message: "Server couldn't load the profile picture!"
+				message: "error loading profile pic!"
 			}
 			res.status(400).send(JSON.stringify(response));
 		}
 		else if (err) {
-			console.log(err);
+			console.error("file uploading error in signupHandler function:");
+            console.log(err);
+            let result = {
+                status: "fail",
+                message: "something went wrong!"
+            };
+            res.status(500).send(JSON.stringify(result));
+		}
+		else if (!req.file) {
 			let response = {
 				status: "reject",
-				message: "Something went wrong processing the request!"
+				message: "couldn't load profile pic!"
 			}
 			res.status(400).send(JSON.stringify(response));
 		}
 		else {
-			console.log(req.body);
-			console.log(req.file);
 			addUserHandler(req, res);
 		}
 	});

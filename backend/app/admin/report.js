@@ -1,8 +1,12 @@
 const path = require('path')
-const client = require(path.join(process.env.APPLICATION_PATH, 'database.js')).client;
+const { client } = require(
+    path.join(process.env.APPLICATION_PATH, 'database.js')
+);
 const express = require('express');
 const router = express.Router();
 
+// **********************************************************************
+// helper functions
 function loadRejectHelper(res, field) {
 	let response = {
 		status: "reject",
@@ -27,6 +31,7 @@ function isUsernameInvalid(username) {
 	);
 }
 
+// **********************************************************************
 router.post('/api/report', (req, res) => {
     console.log(req.body);
     let username = req.body.username;
@@ -96,6 +101,7 @@ router.post('/api/report', (req, res) => {
     })
 });
 
+// **********************************************************************
 router.get('/api/report', (req, res) => {
     if (req.query.username) {
         client.db("test").collection("logs")

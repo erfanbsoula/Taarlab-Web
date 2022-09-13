@@ -85,7 +85,7 @@ function canLogin(req, res, next) {
     if (isAuthenticated(req)) {
         let result = {
             status: 'reject',
-            message:  'you are already logged in!'
+            message:  'already logged in!'
         }
         res.send(JSON.stringify(result))
     }
@@ -111,8 +111,7 @@ router.post('/login', canLogin,
 
 router.use((req, res, next) => {
     if (!isAuthenticated(req)) {
-        res.redirect('/login');
-		console.log("here", req.url)
+        res.status(401).redirect('/login');
 	}
     else next();
 });
