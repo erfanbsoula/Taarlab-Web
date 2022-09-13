@@ -1,83 +1,35 @@
 const path = require('path');
 const express = require('express');
 const client = require('./database.js').client;
-const printdb = require('./database.js').printdb;
 
 const router = express.Router();
 
-router.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'public')));
+router.use('/', express.static(path.join(process.env.FRONT_PATH, 'public')));
 router.use(require("./auth.js").router);
-router.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'private')));
 router.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'private', 'home', 'home.html'));
+	res.sendFile(path.join(process.env.FRONT_PATH, 'private', 'home', 'home.html'));
 })
-router.use(require("./users/router.js").router);
-router.use(require("./report/router.js").router);
+router.use('/', express.static(path.join(process.env.FRONT_PATH, 'private')));
+router.use(require("./admin/router.js").router);
 
 // **********************************************************************
-// API for posting data to the DataBase
-router.post('/data', (req, res) => {
-	if (req.user.level != 2) {
-		res.status(403).send("Unauthorizes Access!");
-		return;
-	}
-
-	if (!req.body.username || !req.body.dateTime || !req.body.progress) {
-		res.status(400).end();
-		return;
-	}
-
-	client.db("test").collection("dataStorage").insertOne({
-		username: req.body.username,
-		dateTime: req.body.dateTime,
-		progress: req.body.progress
-	}, (error) => {
-		if (error) {
-			console.log(error.message);
-			res.status(500).send("DataBase Error!");
-			return;
-		}
-
-		res.status(200).send("Recieved!")
-	});
-})
+// clear the residual sessions from the previous execution
+// client.db("test").collection("sessions").drop((err, delOK) => {
+// 	if (err) {
+// 		console.log(err.errmsg);
+// 	};
+// 	if (delOK) {
+// 		console.log("sessions collection deleted");
+// 	}
+// 	let adminDB = client.db("test").admin();
+// 	console.log('listing the database:')
+// 	adminDB.listDatabases(function(err, result) {
+// 		if (err) {
+// 			console.log(err.errmsg);
+// 		};
+// 		console.log(result.databases);
+// 	}); 
+// });
 
 // **********************************************************************
-
-
-router.get('/api/users', (req, res) => {
-	if (req.user.level == 1) {
-		client.db("test").collection("users").find().toArray((error, result) => {
-			if (error) {
-				console.log(error.message);
-				res.status(500).send("DataBase Error!");
-				return;
-			}
-			res.send(JSON.stringify(result));
-		});
-	}
-	else {
-		res.status(403).send("Unauthorizes Access!");
-		return;
-	}
-})
-
-router.post('/signup', (req, res) => {
-	client.db("test").collection("users").insertOne({
-		username: req.body.username,
-		password: req.body.password
-	});
-	res.redirect('/login');
-})
-
-router.get('/print', (req, res) => {
-	printdb();
-	res.send("done!")
-})
-
-// app.all('*', (req, res) => {
-// 	res.status(404);
-// 	res.send('<h1>Error: 404 not found!<h1>');
-// })
-
 module.exports = router;

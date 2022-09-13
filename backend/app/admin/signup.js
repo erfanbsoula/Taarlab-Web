@@ -1,14 +1,15 @@
 const path = require('path');
 const fs = require('fs');
-const client = require('../database.js').client;
+const client = require(path.join(process.env.APPLICATION_PATH, 'database.js')).client;
 const { DateTime } = require("luxon");
 
 const TIME_ZONE = 'Asia/Tehran';
+const UPLOADS_TMP = path.join(process.env.APPLICATION_PATH, 'uploads-tmp');
 
 const multer = require("multer");
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads-tmp');
+        cb(null, UPLOADS_TMP);
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now());
@@ -117,7 +118,7 @@ function addUserHandler(req, res) {
 	let params = loadBodyParams(req, res);
 	if (!params) return;
 
-	let filepath = path.join(__dirname, '..', '..', req.file.path);
+	let filepath = path.join(UPLOADS_TMP, req.file.path);
 	fs.readFile(filepath, {encoding: 'base64'}, (err, data) => {
 		if (err) {
 			console.log(err);

@@ -1,4 +1,5 @@
-const client = require('../database.js').client;
+const path = require('path')
+const client = require(path.join(process.env.APPLICATION_PATH, 'database.js')).client;
 const express = require('express');
 const router = express.Router();
 

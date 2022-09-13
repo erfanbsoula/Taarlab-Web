@@ -27,7 +27,7 @@ document.querySelectorAll("nav .nav-item").forEach((element, key, parent) => {
 });
 
 document.querySelector(".exit").addEventListener('click', (event) => {
-    fetch('/logout', { method: 'DELETE', redirect: 'follow'})
+    fetch('/login', { method: 'DELETE', redirect: 'follow'})
     .then(res => res.json())
     .then(json => {
         if (json.status == "ok"){

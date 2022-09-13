@@ -1,4 +1,5 @@
-const client = require('../database.js').client;
+const path = require('path')
+const client = require(path.join(process.env.APPLICATION_PATH, 'database.js')).client;
 const express = require('express');
 const router = express.Router();
 
@@ -23,8 +24,6 @@ router.get('/api/users', (req, res) => {
         res.send(JSON.stringify(collection));
     });
 });
-
-const db_user_options = 
 
 router.get('/api/user', (req, res) => {
     if (!req.query.username) {
@@ -79,5 +78,7 @@ router.get('/api/profilePic', (req, res) => {
         res.send(img);
     });
 });
+
+router.use(require('./report.js').router);
 
 module.exports.router = router;
