@@ -32,7 +32,17 @@ client.db("test").collection("sessions").drop((err, delOK) => {
 // **********************************************************************
 router.use('/', express.static(path.join(process.env.FRONT_PATH, 'public')));
 router.use(require("./auth.js").router);
-router.use(require("./admin/router.js").router);
+
+const admin = require("./admin/router.js").router;
+const user = require("./user/router.js").router;
+router.use((req, res, next) => {
+	if (req.user.level == 1) {
+		admin(req, res, next);
+	}
+	else {
+		user(req, res, next);
+	}
+});
 
 // **********************************************************************
 module.exports = router;
