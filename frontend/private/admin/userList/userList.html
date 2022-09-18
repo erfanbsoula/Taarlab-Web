@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>HWM</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+   <link rel="stylesheet" href="/userList/userList.css">
+</head>
+
+<body>
+<header class="width-full">
+   <div class="row-flex center">
+      <div class="space-left" id="menu-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+      <div id="header-title">TAVANRESAN - TAARLAB</div>
+   </div>
+   <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+   <img src="/assets/icons/ai.png" alt="icon" class="header-img">
+</header>
+<div class="width-full row-flex">
+   <div id="sidebar">
+      <div id="sidebar-content-container">
+         <nav id="navbar">
+            <div onclick="window.location.href = '/home/home.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Home</div>
+            </div>
+            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">Add New User</div>
+            </div>
+         </nav>
+         <div class="exit">
+            <img src="/assets/icons/logout.png" alt="">
+            <div class="space-left">logout</div>
+         </div>
+      </div>
+   </div>
+   <div class="width-full" id="content-container">
+      <main class="width-full">
+         <br>
+         <div class="row-flex space-top center">
+            <div class="align-self-2start margin-sides column-flex center" style="width: 950px;">
+               <div class="styled-table">
+                  <table>
+                     <thead>
+                        <tr>
+                           <th></th>
+                           <th>Profile</th>
+                           <th>First Name</th>
+                           <th>Last Name</th>
+                           <th>Birth Date</th>
+                           <th>National ID</th>
+                           <th>
+                              <div class="row-flex center">
+                                 <img src="/assets/icons/sort.png" alt="" id="dateSort">
+                                 <div>Signup Date</div>
+                              </div>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+</body>
+<!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
+<script src="/sidebar-menu.js"></script>
+<script src="/message.js"></script>
+<script src="/userList/userList.js"></script>
+</html>

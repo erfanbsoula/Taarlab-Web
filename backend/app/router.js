@@ -33,6 +33,16 @@ client.db("test").collection("sessions").drop((err, delOK) => {
 router.use('/', express.static(path.join(process.env.FRONT_PATH, 'public')));
 router.use(require("./auth.js").router);
 
+router.use('/assets/', express.static(
+	path.join(process.env.FRONT_PATH, 'private', 'assets')
+));
+router.get('/sidebar-menu.js', (req, res) => {
+	res.sendFile(path.join(process.env.FRONT_PATH, 'components', 'sidebar', 'sidebar-menu.js'));
+});
+router.get('/message.js', (req, res) => {
+	res.sendFile(path.join(process.env.FRONT_PATH, 'components', 'message', 'message.js'));
+});
+
 const admin = require("./admin/router.js").router;
 const user = require("./user/router.js").router;
 router.use((req, res, next) => {

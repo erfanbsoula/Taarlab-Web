@@ -1,14 +1,18 @@
 const path = require('path');
 const express = require('express');
-const client = require.main.require('./database.js').client;
+const client = require('../database.js').client;
 
 let router = express.Router();
 
 const USER_VIEW_PATH = path.join(process.env.FRONT_PATH, 'private', 'userView');
-router.use('/userView/', express.static(USER_VIEW_PATH));
-router.use('/assets/', express.static(path.join(process.env.FRONT_PATH, 'private', 'assets')));
-router.use('/components/', express.static(path.join(process.env.FRONT_PATH, 'private', 'components')));
-router.get('/', (req, res) => {res.redirect('/userView/userHome.html?username=' + req.user.username)});
+// **********************************************************************
+// serving static pages
+const PRIVATE_FRONT_PATH = path.join(process.env.FRONT_PATH, 'private', 'user');
+const HOMEPAGE_PATH = path.join(PRIVATE_FRONT_PATH, 'home', 'home.html');
+
+// **********************************************************************
+router.get('/', (req, res) => { res.sendFile(HOMEPAGE_PATH); })
+router.use('/', express.static(PRIVATE_FRONT_PATH));
 
 router.get('/api/user', (req, res) => {
     let result = {

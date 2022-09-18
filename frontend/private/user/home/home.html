@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>HWM</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+   <link rel="stylesheet" href="/home/home.css">
+</head>
+
+<body>
+<header class="width-full">
+   <div class="row-flex center">
+      <div class="space-left" id="menu-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+      <div id="header-title">TAVANRESAN - TAARLAB</div>
+   </div>
+   <!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+   <img src="/assets/icons/ai.png" alt="icon" class="header-img">
+</header>
+<div class="width-full row-flex">
+   <div id="sidebar">
+      <div id="sidebar-content-container">
+         <nav id="navbar">
+            <div onclick="window.location.href = '/userView/userView.html';" class="nav-item">
+               <div class="pointer"></div>
+               <div class="space-left">View Profile</div>
+            </div>
+         </nav>
+         <div class="exit">
+            <img src="/assets/icons/logout.png" alt="">
+            <div class="space-left">logout</div>
+         </div>
+      </div>
+   </div>
+   <div class="width-full" id="content-container">
+      <main class="width-full">
+         <br>
+         <div class="row-flex space-top center">
+            <div class="align-self-2start margin-sides column-flex center" style="width: 750px;">
+               <div class="styled-table">
+                  <table>
+                     <thead>
+                        <tr>
+                           <th></th>
+                           <th>Profile</th>
+                           <th>
+                              <div class="row-flex center">
+                                 <img src="/assets/icons/sort.png" alt="" id="dateSort">
+                                 <div style="margin-right: 20px;">Date</div>
+                              </div>
+                           </th>
+                           <th>Time</th>
+                           <th>Progress</th>
+                           <th>Temperature</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <br><br>
+            </div>
+            <div class="align-self-2start space-left column-flex center" style="width: 300px;">
+               <div class="width-full card">
+                  <canvas id="myChart"></canvas>
+               </div>
+               <br><br>
+               <div class="width-full card summary">
+                  <table>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+</body>
+<!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
+<script src="/sidebar-menu.js"></script>
+<script src="/assets/chart.min.js"></script>
+<script src="/assets/luxon.min.js"></script>
+<script src="/message.js"></script>
+<script src="/home/home.js"></script>
+</html>

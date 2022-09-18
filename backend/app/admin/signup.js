@@ -11,7 +11,7 @@ const TIME_ZONE = 'Asia/Tehran';
 // **********************************************************************
 // multer setup for file uploads
 const multer = require("multer");
-const UPLOADS_TMP = path.join(process.env.APPLICATION_PATH, 'uploads-tmp');
+const UPLOADS_TMP = path.join(process.env.APPLICATION_PATH, 'tmp_dir');
 
 var storage = multer.diskStorage({
 	destination: (req, file, cb) => {

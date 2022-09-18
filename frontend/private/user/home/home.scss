@@ -1,0 +1,85 @@
+@use '../../../components/configs.scss' as CONFIG;
+@use '../../../components/message/message.scss';
+@use '../../../components/tables/table.scss';
+@use '../../../components/index.scss';
+
+.styled-table table {
+    
+    th:nth-of-type(1), tr td:nth-of-type(1) {
+        width: 75px;
+    }
+    th:nth-of-type(2), tr td:nth-of-type(2) {
+        width: 140px;
+        text-align: left;
+    }
+    th:nth-of-type(3), tr td:nth-of-type(3) {
+        width: 120px;
+
+        #dateSort {
+            width: 12px;
+            height:12px;
+            margin-right: 5px;
+            filter: invert(0.95);
+            cursor: pointer;
+        }
+
+        div div {
+            margin-right: 20px;
+        }
+    }
+    th:nth-of-type(4), tr td:nth-of-type(4) {
+        width: 103px;
+    }
+    th:nth-of-type(5), tr td:nth-of-type(5) {
+        width: 102px;
+    }
+    th:nth-of-type(6), tr td:nth-of-type(6) {
+        width: 160px;
+    }
+
+    img {
+        $image-width: 25px;
+        width: $image-width;
+        height: $image-width;
+        border-radius: 50%;
+    }
+}
+
+.summary {
+    color: CONFIG.$GRAY;
+
+    table {
+        width: 240px;
+        margin: auto;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 0.9em;
+
+        tbody {
+            tr {
+                background-color: CONFIG.$FOREGROUND_WHITE;
+                border-bottom: 1px solid CONFIG.$SOLID_BORDER;
+
+                td:nth-of-type(1) {
+                    width: 170px;
+                }
+            }
+
+            tr:last-of-type {
+                border-bottom: 0;
+            }
+
+            .active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+        }
+
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+    }
+}

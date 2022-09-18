@@ -20,7 +20,7 @@ router.use((req, res, next) => {
 
 // **********************************************************************
 // serving static pages
-const PRIVATE_FRONT_PATH = path.join(process.env.FRONT_PATH, 'private');
+const PRIVATE_FRONT_PATH = path.join(process.env.FRONT_PATH, 'private', 'admin');
 const HOMEPAGE_PATH = path.join(PRIVATE_FRONT_PATH, 'home', 'home.html');
 
 router.get('/', (req, res) => { res.sendFile(HOMEPAGE_PATH); })

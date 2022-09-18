@@ -4,7 +4,7 @@
    <title>HWM</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-   <link rel="stylesheet" href="/userList/userList.css">
+   <link rel="stylesheet" href="/userView/userView.css">
 </head>
 
 <body>
@@ -29,10 +29,6 @@
                <div class="pointer"></div>
                <div class="space-left">Home</div>
             </div>
-            <div onclick="window.location.href = '/userAdd/userAdd.html';" class="nav-item">
-               <div class="pointer"></div>
-               <div class="space-left">Add New User</div>
-            </div>
          </nav>
          <div class="exit">
             <img src="/assets/icons/logout.png" alt="">
@@ -44,29 +40,45 @@
       <main class="width-full">
          <br>
          <div class="row-flex space-top center">
-            <div class="align-self-2start margin-sides column-flex center" style="width: 950px;">
-               <div class="styled-table">
-                  <table>
-                     <thead>
-                        <tr>
-                           <th></th>
-                           <th>Profile</th>
-                           <th>First Name</th>
-                           <th>Last Name</th>
-                           <th>Birth Date</th>
-                           <th>National ID</th>
-                           <th>
+            <div class="align-self-2start margin-sides column-flex center" style="width: 900px;">
+               <div class="card user-data">
+						<div class="column-flex margin-sides center" style="width: 25%;">
+							<img src="/assets/icons/profile.png" alt="profile" class="profile-img">
+							<div class="username">@</div>
+						</div>
+						<table>
+							<tbody>
+							</tbody>
+						</table>
+               </div>
+					<div class="styled-table" style="margin-top: 40px; width: 99%;">
+						<table>
+							<thead>
+								<tr>
+									<th>
                               <div class="row-flex center">
                                  <img src="/assets/icons/sort.png" alt="" id="dateSort">
-                                 <div>Signup Date</div>
+                                 <div>Date</div>
                               </div>
                            </th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                     </tbody>
-                  </table>
-               </div>
+                           <th>Time</th>
+									<th>Progress</th>
+                           <th>1</th>
+                           <th>2</th>
+                           <th>3</th>
+                           <th>4</th>
+                           <th>5</th>
+                           <th>6</th>
+                           <th>7</th>
+                           <th>8</th>
+                           <th>9</th>
+                           <th>Temprature</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
             </div>
          </div>
       </main>
@@ -74,7 +86,7 @@
 </div>
 </body>
 <!-- <script onload="cdnLoaded()" onerror="cdnError()" async src=""></script> -->
-<script src="/components/sidebar/sidebar-menu.js"></script>
-<script src="/components/message/message.js"></script>
-<script src="/userList/userList.js"></script>
+<script src="/sidebar-menu.js"></script>
+<script src="/message.js"></script>
+<script src="/userView/userView.js"></script>
 </html>
