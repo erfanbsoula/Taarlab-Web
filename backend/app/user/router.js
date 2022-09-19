@@ -4,7 +4,6 @@ const client = require('../database.js').client;
 
 let router = express.Router();
 
-const USER_VIEW_PATH = path.join(process.env.FRONT_PATH, 'private', 'userView');
 // **********************************************************************
 // serving static pages
 const PRIVATE_FRONT_PATH = path.join(process.env.FRONT_PATH, 'private', 'user');
