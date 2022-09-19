@@ -523,33 +523,26 @@ main {
 }
 
 .styled-table table th:nth-of-type(1), .styled-table table tr td:nth-of-type(1) {
-  width: 75px;
+  width: 195px;
 }
-.styled-table table th:nth-of-type(2), .styled-table table tr td:nth-of-type(2) {
-  width: 140px;
-  text-align: left;
-}
-.styled-table table th:nth-of-type(3), .styled-table table tr td:nth-of-type(3) {
-  width: 120px;
-}
-.styled-table table th:nth-of-type(3) #dateSort, .styled-table table tr td:nth-of-type(3) #dateSort {
+.styled-table table th:nth-of-type(1) #dateSort, .styled-table table tr td:nth-of-type(1) #dateSort {
   width: 12px;
   height: 12px;
   margin-right: 5px;
   filter: invert(0.95);
   cursor: pointer;
 }
-.styled-table table th:nth-of-type(3) div div, .styled-table table tr td:nth-of-type(3) div div {
+.styled-table table th:nth-of-type(1) div div, .styled-table table tr td:nth-of-type(1) div div {
   margin-right: 20px;
 }
+.styled-table table th:nth-of-type(2), .styled-table table tr td:nth-of-type(2) {
+  width: 135px;
+}
+.styled-table table th:nth-of-type(3), .styled-table table tr td:nth-of-type(3) {
+  width: 135px;
+}
 .styled-table table th:nth-of-type(4), .styled-table table tr td:nth-of-type(4) {
-  width: 103px;
-}
-.styled-table table th:nth-of-type(5), .styled-table table tr td:nth-of-type(5) {
-  width: 102px;
-}
-.styled-table table th:nth-of-type(6), .styled-table table tr td:nth-of-type(6) {
-  width: 160px;
+  width: 185px;
 }
 .styled-table table img {
   width: 25px;
