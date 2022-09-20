@@ -97,7 +97,6 @@ function saveLogInDB(res, log) {
 }
 
 router.post('/api/report', (req, res) => {
-    console.log(req.body);
     let log = parseReportParams(res, req.body);
     if (!log) return;
 

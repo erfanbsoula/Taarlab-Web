@@ -3,6 +3,7 @@ let DateTime = luxon.DateTime;
 
 let data = null;
 let sortOrder = true;
+let pie_chart = null;
 
 fetch("/api/report", { method: 'GET' })
 .then((res) => res.json())
@@ -24,6 +25,29 @@ fetch("/api/report", { method: 'GET' })
     console.log(err);
     messageBox.showFailure("unable to load the data!");
 });
+
+setInterval(() => {
+    fetch("/api/report", { method: 'GET', redirect: 'follow' })
+    .then((res) => res.json())
+    .then((json) => {
+        json.sort((a, b) => {
+            if (a.date < b.date) return -1;
+            if (a.date > b.date) return 1;
+            if (a.time < b.time) return -1;
+            if (a.time > b.time) return 1;
+            return 0;
+        });
+
+        data = json;
+        renderTable(json, sortOrder);
+        writeSummary(json);
+        updateGraph(json);
+    })
+    .catch((err) => {
+        console.log(err);
+        messageBox.showFailure("unable to load the data!");
+    });
+}, 3000);
 
 document.querySelector(".styled-table #dateSort").addEventListener("click", (event) => {
     sortOrder = !sortOrder;
@@ -75,7 +99,7 @@ function drawGraph(jsonArray) {
     let notComplete = jsonArray.length - complete;
 
     const pie_ctx = document.getElementById('myChart').getContext('2d');
-    const pie_chart = new Chart(pie_ctx, {
+    pie_chart = new Chart(pie_ctx, {
         type: 'pie',
         data: {
         labels: ["Complete", "Not Complete"],
@@ -99,6 +123,19 @@ function drawGraph(jsonArray) {
             }
         }
     });
+}
+
+function updateGraph(jsonArray) {
+    let complete = 0;
+    for (let i = 0; i < jsonArray.length; i++) {
+        if (jsonArray[i].progress == 100) {
+            complete += 1;
+        }
+    }
+    let notComplete = jsonArray.length - complete;
+    pie_chart.data.datasets[0].data[0] = complete;
+    pie_chart.data.datasets[0].data[1] = notComplete;
+    pie_chart.update();
 }
 
 function writeSummary(jsonArray) {
