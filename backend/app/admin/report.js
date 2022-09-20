@@ -40,7 +40,7 @@ function isUsernameInvalid(username) {
 }
 
 // **********************************************************************
-function parseReportParams(body) {
+function parseReportParams(res, body) {
     let username = body.username;
     if (!username) return loadRejectHelper(res, "username");
     if (isUsernameInvalid(username))
@@ -49,17 +49,18 @@ function parseReportParams(body) {
     let date = body.date;
     if (!date) return loadRejectHelper(res, "date");
     // check if the input string is formatted as "yyyy-mm-dd"
-    if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/g.test(dateString))
+    if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/g.test(date))
         return rejectHelper("date");
 
     let time = body.time;
     if (!time) return loadRejectHelper(res, "time");
     // check if the input string is formatted as "hh:mm"
-    if (!/^[0-9]{2}:[0-9]{2}$/g.test(time))
+    if (!/^[0-9]{2}:[0-9]{2}:[0-9]{2}$/g.test(time))
         return rejectHelper("time");
 
     let progress = body.progress;
-    if (!progress) return loadRejectHelper(res, "progress");
+    if (!progress && progress != 0) return loadRejectHelper(res, "progress");
+    progress = Math.floor(progress);
 
     let steps = body.steps;
     if (!steps) return loadRejectHelper(res, "steps");
@@ -80,7 +81,7 @@ function parseReportParams(body) {
     }
 }
 
-function saveLogInDB(log) {
+function saveLogInDB(res, log) {
     client.db("test").collection("logs").insertOne(log)
     .then(() => {
         let response = {
@@ -97,19 +98,20 @@ function saveLogInDB(log) {
 
 router.post('/api/report', (req, res) => {
     console.log(req.body);
-    let log = parseReportParams(req.body);
+    let log = parseReportParams(res, req.body);
+    if (!log) return;
 
-    if (log.username == "unknown") {
-        saveLogInDB(log);
+    if (log.username == "Unknown") {
+        saveLogInDB(res, log);
         return;
     }
 
-    client.db("test").collection("users").findOne({ username: username })
+    client.db("test").collection("users").findOne({ username: log.username })
     .then((result) => {
         if (!result) {
             return rejectHelper(res, "username");
         }
-        saveLogInDB(log);
+        saveLogInDB(res, log);
     })
     .catch((err) => {
         console.log(err);

@@ -129,7 +129,7 @@ function addUserHandler(req, res) {
 	let params = loadBodyParams(req, res);
 	if (!params) return;
 
-	let filepath = path.join(UPLOADS_TMP, req.file.path);
+	let filepath = req.file.path;
 	fs.readFile(filepath, {encoding: 'base64'}, (err, data) => {
 		if (err) {
 			console.error("file reading error in addUserHandler function:");

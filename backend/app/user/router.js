@@ -15,6 +15,7 @@ router.use('/', express.static(PRIVATE_FRONT_PATH));
 
 router.get('/api/user', (req, res) => {
     let result = {
+        username: req.user.username,
         firstname: req.user.firstname,
         lastname: req.user.lastname,
         nationalID: req.user.nationalID,

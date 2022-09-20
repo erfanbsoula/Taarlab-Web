@@ -48,8 +48,15 @@ function renderTable(data, inverse=false) {
 
 function appendRow(tbody, item) {
     let row = document.createElement('tr');
-    let content = "<td><img src='/api/profilePic?username=" + item.username+ "' alt='pic'></td>";
-    content += "<td><a href='/userView/userView.html?username=" + item.username + "'>@" + item.username + "</a></td>";
+    let content = "";
+    if (item.username == "Unknown") {
+        content = "<td></td>";
+        content += "<td>Unknown</td>";
+    }
+    else {
+        content = "<td><img src='/api/profilePic?username=" + item.username + "' alt='pic'></td>";
+        content += "<td><a href='/userView/userView.html?username=" + item.username + "'>@" + item.username + "</a></td>";
+    }
     content += "<td>" + item.date + "</td>";
     content += "<td>" + item.time + "</td>";
     content += "<td>" + item.progress + "%</td>";

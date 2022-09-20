@@ -10,7 +10,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 fetch("/api/user", { method: 'GET' })
 .then((res) => res.json())
 .then((json) => {
-    document.querySelector(".user-data .username").innerText += params.username;
+    document.querySelector(".user-data .username").innerText += json.username;
     let tbody = document.querySelector(".user-data tbody");
     let content = "<tr><td>First Name:</td>";
     content +=  "<td>" + json.firstname.charAt(0).toUpperCase() + json.firstname.slice(1) + "</td></tr>";
@@ -23,7 +23,7 @@ fetch("/api/user", { method: 'GET' })
     content += "<tr><td>Signup Date:</td>";
     content += "<td>" + json.signupDate + "</td></tr>";
     tbody.innerHTML = content;
-    document.querySelector(".profile-img").src = "/api/profilePic?username=" + params.username;
+    document.querySelector(".profile-img").src = "/api/profilePic?username=" + json.username;
 })
 .catch((err) => {
     console.log(err);
