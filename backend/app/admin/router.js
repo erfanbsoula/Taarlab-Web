@@ -27,7 +27,8 @@ router.get('/', (req, res) => { res.sendFile(HOMEPAGE_PATH); })
 router.use('/', express.static(PRIVATE_FRONT_PATH));
 
 // **********************************************************************
-router.post('/api/signup', require('./signup.js').handler);
+// init signup and edit-user handlers
+router.use(require('./signup.js').router);
 
 // **********************************************************************
 // api to get all users info

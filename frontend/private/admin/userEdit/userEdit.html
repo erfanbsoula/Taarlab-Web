@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HWM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/userEdit/userEdit.css">
+    <link rel="stylesheet" href="/assets/calendar/flatpicker-blueTheme.css">
+</head>
+
+<body>
+<header class="width-full">
+	<div class="row-flex center">
+		<div class="space-left" id="menu-btn">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div id="header-title">TAVANRESAN - TAARLAB</div>
+	</div>
+	<!-- <img src="assets/icons/search.png" alt="icon" id="search-img"> -->
+	<img src="/assets/icons/ai.png" alt="icon" class="header-img">
+</header>
+<div class="width-full row-flex">
+	<div id="sidebar">
+		<div id="sidebar-content-container">
+		   <nav id="navbar">
+			  <div onclick="window.location.href = '/home/home.html';" class="nav-item">
+				 <div class="pointer"></div>
+				 <div class="space-left">Home</div>
+			  </div>
+			  <div onclick="window.location.href = '/userList/userList.html';" class="nav-item">
+				 <div class="pointer"></div>
+				 <div class="space-left">View Users</div>
+			  </div>
+		   </nav>
+		   <div class="exit">
+			  <img src="/assets/icons/logout.png" alt="">
+			  <div class="space-left">logout</div>
+		   </div>
+		</div>
+	 </div>
+	<div class="width-full" id="content-container">
+		<main class="width-full">
+			<div id="form-container">
+				<div id="add-user-card">
+					<div id="card-header">
+						<div>Edit User</div>
+					</div>
+					<div id="card-body">
+						<form id="userForm" method="post" action="/api/edit-user" enctype="multipart/form-data">
+							<div class="form-body">
+								<div class="column-flex center margin-sides" id="img-upload-canvas">
+									<br>
+									<div id="prevContainer">
+										<img src="" alt="icon" id="profilePrev">
+										<div id="hoverImg">
+											<img src="/assets/icons/upload.png" alt="upload">
+											<span>Update</span>
+										</div>
+									</div>
+									<label for="profilePrev">Change Profile Picture</label>
+									<input type="file" id="profilePic" name="profilePic" accept="image/*" style="width: 0.1px; height: 0.1px; opacity: 0;">
+								</div>
+								<div class="fields">
+									<div class="row-flex">
+										<div class="user-label space-right">username:</div>
+										<a class="username">@</a>
+									</div>
+									<br>
+									<div class="row-flex width-full center">
+										<div class="space-right width-50">
+											<label for="firstname">first name:</label>
+											<input id="firstname" name="firstname" type="text" maxlength="32" required>
+										</div>
+										<div class="space-left width-50">
+											<label for="lastname">last name:</label>
+											<input id="lastname" name="lastname" type="text" maxlength="32" required>
+										</div>
+									</div>
+									<br>
+									<div class="row-flex width-full">
+										<div class="space-right width-full">
+											<label for="nationalID">national ID:</label>
+											<input id="nationalID" name="nationalID" type="text" maxlength="10" required>
+										</div>
+										<div class="space-left width-full" id="date-canvas">
+											<label for="dateInput">date of birth:</label>
+											<input type="text"  id="dateInput" name="dateInput">
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="row-flex width-full">
+								<div id="formError" class="width-full"></div>
+								<input type="submit" class="button-gradient" value="update" style="margin-right: 0;">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
+</body>
+<script src="/sidebar-menu.js"></script>
+<script src="/assets/calendar/flatPicker.min.js"></script>
+<script src="/message.js"></script>
+<script src="/userEdit/userEdit.js"></script>
+</html>

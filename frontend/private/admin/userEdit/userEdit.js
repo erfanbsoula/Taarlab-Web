@@ -1,25 +1,36 @@
 let messageBox = new MessageBox();
 
-const fp = flatpickr("#dateInput", {
-    enableTime: false,
-    dateFormat: "Y-m-d",
-    position: 'below left',
-    minDate: "1960/01/01",
-    maxDate: "2020/12/30",
-    // onOpen: function(selectedDates, dateStr, instance) {
-    //     document.querySelector("#date-canvas label").style.display = "none";
-    //     document.getElementById("date-canvas").style.alignSelf = "flex-start";
-    // },
-    // onClose: function(selectedDates, dateStr, instance) {
-    //     document.querySelector("#date-canvas label").style.display = "inline";
-    //     document.getElementById("date-canvas").style.alignSelf = "flex-end";
-    // }
-});
+const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop)
+})
+document.getElementById("profilePrev").src = "/api/profilePic?username=" + params.username;
+document.querySelector(".fields .username").href = "/userView/userView.html?username=" + params.username;
 
-// document.getElementById("profilePic").value = "";
-if (document.getElementById("profilePic").files[0]) {
-    let url = URL.createObjectURL(document.getElementById("profilePic").files[0]);
-    document.getElementById("profilePrev").src = url;
+let fp = null;
+
+if (params.username) {
+    fetch("/api/user?username=" + params.username, { method: 'GET' })
+    .then((res) => res.json())
+    .then((json) => {
+        document.getElementById("firstname").value = json.firstname;
+        document.getElementById("lastname").value = json.lastname;
+
+        fp = flatpickr("#dateInput", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+            position: 'below left',
+            minDate: "1960/01/01",
+            maxDate: "2020/12/30",
+            defaultDate: json.birthDate,
+        });
+
+        document.getElementById("nationalID").value = json.nationalID;
+        document.querySelector(".username").innerText += params.username;
+    })
+    .catch((err) => {
+        console.log(err);
+        messageBox.showFailure("unable to load user data!");
+    });
 }
 
 document.getElementById("hoverImg").addEventListener('click', (event) => {
@@ -32,11 +43,6 @@ document.getElementById("profilePic").addEventListener('change', (event) => {
         document.getElementById("profilePrev").src = URL.createObjectURL(file);
     }
 })
-
-function clearForm() {
-    document.getElementById("userForm").reset();
-    document.getElementById("profilePrev").src = "/assets/icons/profile.png";
-}
 
 function error(message) {
     document.getElementById("formError").innerText = message;
@@ -83,42 +89,18 @@ function getFormData() {
         return false;
     }
 
-    if (document.getElementById("profilePic").value == "") {
-        error("Please select a profile picture!");
-        return false;
-    }
-    let file = document.getElementById("profilePic").files[0];
-
-    let username = document.getElementById("username").value;
-    if (hasLengthError(username, "Username", 10)) return false;
-    if (/^[0-9]/g.test(username)) {
-        error("Username can't start with a number!");
-        return false;
-    }
-    else if (!/^[a-zA-Z0-9_]+$/g.test(username)) {
-        error("Username can only contain letters, numbers and underlines!");
-        return false;
-    }
-
-    let password = document.getElementById("password").value;
-    if (hasLengthError(password, "Password")) return false;
-    if (/[\0\n]/g.test(password)) {
-        error("using '\\0' and '\\n' is not allowed in the password!");
-        return false;
-    }
-    else if (/[\s]/g.test(password)) {
-        error("Password can not contain spaces!");
-        return false;
-    }
-
     const formData = new FormData();
+    formData.append("username",  params.username);
     formData.append("firstname",  firstname);
     formData.append("lastname",  lastname);
     formData.append("nationalID",  nationalID);
     formData.append("birthDate",  birthDate);
-    formData.append("profilePic", file);
-    formData.append("username", username);
-    formData.append("password",  password);
+
+    if (document.getElementById("profilePic").value != "") {
+        let file = document.getElementById("profilePic").files[0];
+        formData.append("profilePic", file);
+    }
+
     error("");
     return formData;
 }
@@ -130,15 +112,14 @@ document.getElementById("userForm").addEventListener('submit', (event) => {
         return;
     }
 
-    fetch("/api/signup", {
+    fetch("/api/edit-user", {
         method: 'POST',
         body: formData,
     })
     .then((res) => res.json())
     .then((json) => {
         if (json.status == "ok") {
-            messageBox.showSuccess("Signed up user successfuly!");
-            clearForm();
+            messageBox.showSuccess("Updated user info successfuly!");
         }
         else {
             messageBox.showFailure("Server didn't accept the request!");

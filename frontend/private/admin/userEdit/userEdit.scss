@@ -1,0 +1,178 @@
+@use '../../../components/configs.scss' as CONFIG;
+@use '../../../components/index.scss';
+@use '../../../components/message/message.scss';
+
+#form-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 400px;
+    min-height: 500px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.username {
+    color: royalblue;
+    text-decoration: none;
+}
+
+#add-user-card {
+    width: 700px;
+    margin-top: 50px;
+    border-radius: 15px;
+    @include CONFIG.shadow_border(8px, 5px);
+    background-color: CONFIG.$FOREGROUND_WHITE;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: box-shadow 200ms ease-in-out;
+
+    &:hover {
+        @include CONFIG.shadow_border(10px, 7px);
+    }
+
+    #card-header {
+        background-color: CONFIG.$CERULEAN;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        height: 55px;
+
+        div {
+            font-size: 20px;
+            color: CONFIG.$FOREGROUND_WHITE;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+
+    #card-body {
+        width: 620px;
+        margin: 30px auto 20px auto;
+        // margin-bottom: 30px;
+    }
+
+    .form-body {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .fields {
+            width: 430px;
+        }
+    }
+
+    form {
+        color: CONFIG.$GRAY;
+        width: 100%;
+        
+        input[type=text] {
+            color: CONFIG.$FOREGROUND_DARK;
+            height: 35px;
+            width: 100%;
+            border: 2px solid CONFIG.$GRAY;
+            box-sizing: border-box;
+            border-radius: 8px;
+            text-align: left;
+            padding: 0 10px;
+            background-color: inherit;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+        }
+
+        #formError {
+            align-self: center;
+            text-align: center;
+            margin-right: 25px;
+            font-size: 15px;
+            color: rgb(240, 50, 0);
+        }
+    }
+
+    .width-30 { width: 30%; }
+    .width-40 { width: 40%; }
+    .width-50 { width: 50%; }
+    .width-60 { width: 60%; }
+    .width-70 { width: 70%; }
+}
+
+#img-upload-canvas {
+    $IMAGE_WIDTH: 120px;
+    width: $IMAGE_WIDTH;
+
+    #prevContainer {
+        position: relative;
+    }
+
+    #hoverImg {
+        position: absolute;
+        top: 0;
+        width: $IMAGE_WIDTH;
+        height: $IMAGE_WIDTH;
+        border-radius: 50%;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        color: #E8E9EB;
+        box-sizing: border-box;
+        transition: all 150ms ease-in-out;
+        cursor: pointer;
+
+        img {
+            filter: invert(100%);
+            width: 50px;
+            height: 50px;
+        }
+
+        &:hover {
+            opacity: 1;
+            backdrop-filter: blur(4px);
+        }
+
+        span {
+            font-size: 17px;
+            font-weight: bold;
+            // cursor: default;
+        }
+    }
+
+    img {
+        width: $IMAGE_WIDTH;
+        height: $IMAGE_WIDTH;
+        border-radius: 50%;
+
+        // &:hover {
+        //     filter: blur(4px);
+        // }
+    }
+
+    label {
+        margin-top: 10px;
+        font-size: smaller;
+        text-align: center;
+        color: CONFIG.$CERULEAN;
+    }
+}
+
+#date-canvas {
+    align-self: flex-end;
+}

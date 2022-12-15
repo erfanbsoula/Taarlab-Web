@@ -1,128 +1,4 @@
 /**
- *  <div class="message success">
- *      <div class="message-edge"></div>
- *      <div class="message-body">test message</div>
- *      <div class="close">
- *          <div>close</div>
- *      </div>
- *  </div>
-**/
-.message {
-  border-radius: 7px 0px 0px 7px;
-  background-color: #F1F1F1;
-  height: 60px;
-  width: 400px;
-  position: fixed;
-  right: -401px;
-  bottom: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 150ms ease-in-out;
-  margin-left: auto;
-  border: inset solid rgba(0, 0, 0, 0.2) 1px;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
-}
-.message .message-edge {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 10px;
-}
-.message .message-body {
-  margin: 0 20px;
-}
-.message .message-close {
-  align-self: stretch;
-  margin: 5px 0;
-  padding: 0 15px;
-  border-left: solid 1px #D5D5D5;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #858585;
-  cursor: pointer;
-}
-
-.success {
-  color: rgb(0, 150, 0);
-}
-.success .message-edge {
-  background-color: rgb(0, 150, 0);
-}
-
-.failure {
-  color: rgb(200, 50, 0);
-}
-.failure .message-edge {
-  background-color: rgb(200, 50, 0);
-}
-
-.styled-table {
-  padding: 0px !important;
-  width: 100%;
-  overflow: hidden;
-  border: 0;
-  box-shadow: 0px -1px 5px 2px rgba(0, 0, 0, 0.15);
-}
-.styled-table table {
-  margin: 0px;
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  font-size: 0.9em;
-}
-.styled-table table thead tr {
-  background-color: #4a8fdd;
-  color: #F7F7F7;
-}
-.styled-table table thead tr th {
-  background-color: #4a8fdd;
-  top: 0;
-}
-.styled-table table tbody tr {
-  background-color: #F7F7F7;
-  color: #505050;
-  border-bottom: 1px solid #E0E0E0;
-}
-.styled-table table tbody tr:nth-of-type(even) {
-  background-color: #F1F1F1;
-}
-.styled-table table tbody tr:last-of-type {
-  border-bottom: 2px solid #4a8fdd;
-}
-.styled-table table tbody .active-row {
-  font-weight: bold;
-  color: #009879;
-}
-.styled-table table th, .styled-table table td {
-  box-sizing: border-box;
-  padding: 12px 15px;
-  overflow: hidden;
-  text-align: center;
-}
-.styled-table table th:first-of-type, .styled-table table tr td:first-of-type {
-  padding-left: 50px;
-}
-.styled-table table th:last-of-type, .styled-table table tr td:last-of-type {
-  padding-right: 50px;
-}
-.styled-table a {
-  margin: 0;
-  padding: 0;
-  color: royalblue;
-  text-decoration: none;
-}
-.styled-table img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/**
  *  <div class="space-left" id="menu-btn">
  *      <span></span>
  *      <span></span>
@@ -522,111 +398,227 @@ main {
   margin: auto;
 }
 
-.user-data {
-  color: #858585;
-  padding: 30px 20px;
+/**
+ *  <div class="message success">
+ *      <div class="message-edge"></div>
+ *      <div class="message-body">test message</div>
+ *      <div class="close">
+ *          <div>close</div>
+ *      </div>
+ *  </div>
+**/
+.message {
+  border-radius: 7px 0px 0px 7px;
+  background-color: #F1F1F1;
+  height: 60px;
+  width: 400px;
+  position: fixed;
+  right: -401px;
+  bottom: 10px;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 150ms ease-in-out;
+  margin-left: auto;
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
+}
+.message .message-edge {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 10px;
+}
+.message .message-body {
+  margin: 0 20px;
+}
+.message .message-close {
+  align-self: stretch;
+  margin: 5px 0;
+  padding: 0 15px;
+  border-left: solid 1px #D5D5D5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #858585;
+  cursor: pointer;
+}
+
+.success {
+  color: rgb(0, 150, 0);
+}
+.success .message-edge {
+  background-color: rgb(0, 150, 0);
+}
+
+.failure {
+  color: rgb(200, 50, 0);
+}
+.failure .message-edge {
+  background-color: rgb(200, 50, 0);
+}
+
+#form-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 400px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
-.user-data .username {
-  margin-top: 20px;
-  cursor: default;
+
+.username {
   color: royalblue;
   text-decoration: none;
 }
-.user-data .edit-btn {
-  margin-top: 5px;
-  padding: 8px 12px;
-  margin-left: auto;
+
+#add-user-card {
+  width: 700px;
+  margin-top: 50px;
+  border-radius: 15px;
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.15);
+  background-color: #F7F7F7;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: box-shadow 200ms ease-in-out;
+}
+#add-user-card:hover {
+  border: inset solid rgba(0, 0, 0, 0.2) 1px;
+  box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.15);
+}
+#add-user-card #card-header {
+  background-color: #4a8fdd;
   display: flex;
   flex-direction: row;
-  color: #505050;
-  font-size: inherit;
-  background-color: inherit;
-  border-radius: 7px;
-  border: #454545 solid 2px;
-  cursor: pointer;
-}
-.user-data .edit-btn img {
-  width: 18px;
-  filter: invert(0.3);
-}
-.user-data table {
-  margin: 0px;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  font-size: 0.9em;
+  max-width: 100%;
+  height: 55px;
 }
-.user-data table tbody tr {
-  background-color: #F7F7F7;
-  border-bottom: 1px solid #D5D5D5;
+#add-user-card #card-header div {
+  font-size: 20px;
+  color: #F7F7F7;
+  text-align: center;
+  font-weight: bold;
 }
-.user-data table tbody tr td:nth-of-type(1) {
+#add-user-card #card-body {
+  width: 620px;
+  margin: 30px auto 20px auto;
+}
+#add-user-card .form-body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#add-user-card .form-body .fields {
+  width: 430px;
+}
+#add-user-card form {
+  color: #858585;
+  width: 100%;
+}
+#add-user-card form input[type=text] {
+  color: #1F2535;
+  height: 35px;
+  width: 100%;
+  border: 2px solid #858585;
+  box-sizing: border-box;
+  border-radius: 8px;
+  text-align: left;
+  padding: 0 10px;
+  background-color: inherit;
+}
+#add-user-card form input[type=text]:focus {
+  outline: none;
+}
+#add-user-card form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+#add-user-card form #formError {
+  align-self: center;
+  text-align: center;
+  margin-right: 25px;
+  font-size: 15px;
+  color: rgb(240, 50, 0);
+}
+#add-user-card .width-30 {
   width: 30%;
 }
-.user-data table tbody tr:last-of-type {
-  border-bottom: 0;
+#add-user-card .width-40 {
+  width: 40%;
 }
-.user-data table tbody .active-row {
-  font-weight: bold;
-  color: #009879;
+#add-user-card .width-50 {
+  width: 50%;
 }
-.user-data table td {
-  padding: 12px 15px;
-  text-align: left;
-  overflow: hidden;
+#add-user-card .width-60 {
+  width: 60%;
+}
+#add-user-card .width-70 {
+  width: 70%;
 }
 
-.profile-img {
+#img-upload-canvas {
+  width: 120px;
+}
+#img-upload-canvas #prevContainer {
+  position: relative;
+}
+#img-upload-canvas #hoverImg {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #E8E9EB;
+  box-sizing: border-box;
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+}
+#img-upload-canvas #hoverImg img {
+  filter: invert(100%);
+  width: 50px;
+  height: 50px;
+}
+#img-upload-canvas #hoverImg:hover {
+  opacity: 1;
+  backdrop-filter: blur(4px);
+}
+#img-upload-canvas #hoverImg span {
+  font-size: 17px;
+  font-weight: bold;
+}
+#img-upload-canvas img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
 }
-
-.styled-table table th, .styled-table table tr td {
-  width: 45px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.styled-table table th:nth-of-type(1), .styled-table table tr td:nth-of-type(1) {
-  width: 130px;
-  padding-left: 25px;
-  padding-right: 15px;
-}
-.styled-table table th:nth-of-type(1) #dateSort, .styled-table table tr td:nth-of-type(1) #dateSort {
-  width: 12px;
-  height: 12px;
-  margin-right: 5px;
-  filter: invert(0.95);
-  border-radius: 0;
-  opacity: 1;
-  cursor: pointer;
-}
-.styled-table table th:nth-of-type(1) div div, .styled-table table tr td:nth-of-type(1) div div {
-  margin-right: 15px;
-}
-.styled-table table th:nth-of-type(2), .styled-table table tr td:nth-of-type(2) {
-  width: 90px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.styled-table table th:nth-of-type(3), .styled-table table tr td:nth-of-type(3) {
-  width: 110px;
-  padding-left: 15px;
-  padding-right: 25px;
-}
-.styled-table table th:last-of-type, .styled-table table tr td:last-of-type {
-  width: unset;
-  padding-right: 30px;
-}
-.styled-table table img {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  opacity: 0.85;
+#img-upload-canvas label {
+  margin-top: 10px;
+  font-size: smaller;
+  text-align: center;
+  color: #4a8fdd;
 }
 
-/*# sourceMappingURL=userView.css.map */
+#date-canvas {
+  align-self: flex-end;
+}
+
+/*# sourceMappingURL=userEdit.css.map */

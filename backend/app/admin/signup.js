@@ -4,6 +4,9 @@ const { client } = require(
 	path.join(process.env.APPLICATION_PATH, 'database.js')
 );
 
+const express = require('express');
+const router = express.Router();
+
 // **********************************************************************
 const { DateTime } = require("luxon");
 const TIME_ZONE = 'Asia/Tehran';
@@ -125,7 +128,7 @@ function loadBodyParams(req, res) {
 }
 
 // **********************************************************************
-function addUserHandler(req, res) {
+function signupHelper(req, res) {
 	let params = loadBodyParams(req, res);
 	if (!params) return;
 
@@ -166,13 +169,23 @@ function addUserHandler(req, res) {
 				if (err) console.log(err);
 			})
 		})
+		.catch((err) => {
+			if (err) {
+				let response = {
+					status: "fail",
+					message: "Something went wrong!"
+				}
+				res.status(500).send(JSON.stringify(response));
+				console.log(err);
+			}
+		});
 	})
 }
 
 // **********************************************************************
-function signupHandler(req, res) {
-	let profilUpload = upload.single("profilePic");
-	profilUpload(req, res, (err) => {
+router.post('/api/signup', (req, res) => {
+	let profileUpload = upload.single("profilePic");
+	profileUpload(req, res, (err) => {
 		if (err instanceof multer.MulterError) {
 			let response = {
 				status: "reject",
@@ -197,9 +210,148 @@ function signupHandler(req, res) {
 			res.status(400).send(JSON.stringify(response));
 		}
 		else {
-			addUserHandler(req, res);
+			signupHelper(req, res);
 		}
 	});
+});
+
+// **********************************************************************
+function loadEditParams(req, res) {
+	let firstname = req.body.firstname;
+	if (!firstname) return loadRejectHelper(res, "firstname");
+	if (hasLengthError(firstname) || !/^[a-zA-Z\s]+$/g.test(firstname))
+		return rejectHelper(res, "firtname");
+	firstname = firstname.trim();
+	
+	let lastname = req.body.lastname;
+	if (!lastname) return loadRejectHelper(res, "lastname");
+	if (hasLengthError(lastname) || !/^[a-zA-Z\s]+$/g.test(lastname))
+		return rejectHelper(res, "lastname");
+	lastname = lastname.trim();
+		
+	let nationalID = req.body.nationalID;
+	if (!nationalID) return loadRejectHelper(res, "nationalID");
+	if (hasLengthError(nationalID, 10) || !/^[0-9]+$/g.test(nationalID))
+		return rejectHelper(res, "nationalID");
+	
+	let birthDate = req.body.birthDate;
+	if (!birthDate) return loadRejectHelper(res, "birthDate");
+	if (birthDate.length != 10 || !isValidDate(birthDate))
+		return rejectHelper(res, "birthDate");
+		
+	return {
+		firstname: firstname.toLowerCase(),
+		lastname: lastname.toLowerCase(),
+		nationalID: nationalID,
+		birthDate: birthDate,
+		username: req.body.username,
+	}
 }
 
-module.exports.handler = signupHandler;
+// **********************************************************************
+function editUserHelper(req, res) {
+	let params = loadEditParams(req, res);
+	if (!params) return;
+
+	let filter = { username: params.username };
+	if (!req.file) {
+		client.db("test").collection("users").updateOne(filter, {
+			$set: {
+				firstname: params.firstname,
+				lastname: params.lastname,
+				nationalID: params.nationalID,
+				birthDate: params.birthDate,
+			}
+		})
+		.then (() => {
+			let response = {
+				status: "ok",
+				message: "accepted!"
+			}
+			res.send(JSON.stringify(response));
+		})
+		.catch((err) => {
+			if (err) {
+				let response = {
+					status: "reject",
+					message: "Bad Request!"
+				}
+				res.status(400).send(JSON.stringify(response));
+				console.log(err);
+			}
+		});
+		return;
+	}
+
+	let filepath = req.file.path;
+	fs.readFile(filepath, {encoding: 'base64'}, (err, data) => {
+		if (err) {
+			console.error("file reading error in editUserHelper function:");
+            console.log(err);
+            let result = {
+                status: "fail",
+                message: "something went wrong!"
+            };
+            res.status(500).send(JSON.stringify(result));
+            return;
+		}
+		client.db("test").collection("users").updateOne(filter, {
+			$set: {
+				firstname: params.firstname,
+				lastname: params.lastname,
+				nationalID: params.nationalID,
+				birthDate: params.birthDate,
+				profilePic: {
+					data: data,
+					contentType: req.file.mimetype
+				}
+			}
+		})
+		.then (() => {
+			let response = {
+				status: "ok",
+				message: "accepted!"
+			}
+			res.send(JSON.stringify(response));
+			fs.unlink(filepath, (err) => {
+				if (err) console.log(err);
+			})
+		})
+		.catch((err) => {
+			let response = {
+				status: "reject",
+				message: "Bad Request!"
+			}
+			res.status(400).send(JSON.stringify(response));
+			console.log(err);
+		})
+	})
+}
+
+// **********************************************************************
+router.post('/api/edit-user', (req, res) => {
+	let profileUpload = upload.single("profilePic");
+	profileUpload(req, res, (err) => {
+		if (err instanceof multer.MulterError) {
+			let response = {
+				status: "reject",
+				message: "error loading profile pic!"
+			}
+			res.status(400).send(JSON.stringify(response));
+		}
+		else if (err) {
+			console.error("file uploading error in signupHandler function:");
+            console.log(err);
+            let result = {
+                status: "fail",
+                message: "something went wrong!"
+            };
+            res.status(500).send(JSON.stringify(result));
+		}
+		else {
+			editUserHelper(req, res);
+		}
+	});
+});
+
+module.exports.router = router;

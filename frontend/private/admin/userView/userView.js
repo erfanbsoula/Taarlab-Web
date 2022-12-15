@@ -6,6 +6,10 @@ let sortOrder = true;
 const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop)
 })
+document.querySelector(".profile-img").src = "/api/profilePic?username=" + params.username;
+document.querySelector(".user-data .edit-btn").addEventListener("click", (event) => {
+    window.location.href = "/userEdit/userEdit.html?username=" + params.username;
+});
 
 if (params.username) {
     fetch("/api/user?username=" + params.username, { method: 'GET' })
@@ -24,7 +28,6 @@ if (params.username) {
         content += "<tr><td>Signup Date:</td>";
         content += "<td>" + json.signupDate + "</td></tr>";
         tbody.innerHTML = content;
-        document.querySelector(".profile-img").src = "/api/profilePic?username=" + params.username;
     })
     .catch((err) => {
         console.log(err);

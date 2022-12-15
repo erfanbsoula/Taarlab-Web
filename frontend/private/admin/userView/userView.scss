@@ -18,9 +18,28 @@
         text-decoration: none;
     }
 
+    .edit-btn {
+        margin-top: 5px;
+        padding: 8px 12px;
+        margin-left: auto;
+        display: flex;
+        flex-direction: row;
+        color: #505050;
+        font-size: inherit;
+        background-color: inherit;
+        border-radius: 7px;
+        border: #454545 solid 2px;
+        cursor: pointer;
+
+        img {
+            width: 18px;
+            filter: invert(0.3);
+        }
+    }
+
     table {
         margin: 0px;
-        width: 60%;
+        width: 100%;
         border-collapse: collapse;
         table-layout: fixed;
         font-size: 0.9em;
