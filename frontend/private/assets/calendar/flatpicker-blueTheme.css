@@ -420,6 +420,8 @@
 }
 .flatpickr-monthDropdown-month {
   font-size: small;
+  background: #eaeaea;
+  color: #484848;
 }
 .flatpickr-weekdays {
   background: #4a8fdd;
